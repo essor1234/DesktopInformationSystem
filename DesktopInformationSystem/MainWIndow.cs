@@ -15,6 +15,7 @@ namespace DesktopInformationSystem
         public MainWIndow()
         {
             InitializeComponent();
+            comboBox1.Text = "ALL";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -23,6 +24,16 @@ namespace DesktopInformationSystem
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripSplitButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripDropDownButton3_Click(object sender, EventArgs e)
         {
 
         }

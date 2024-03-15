@@ -28,101 +28,161 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWIndow));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.editBtn = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            this.refreshBtn = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editBtn = new System.Windows.Forms.ToolStripButton();
+            this.deleteBtn = new System.Windows.Forms.ToolStripButton();
+            this.refreshBtn = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(200, 94);
+            this.dataGridView1.Location = new System.Drawing.Point(160, 93);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(787, 344);
+            this.dataGridView1.Size = new System.Drawing.Size(580, 310);
             this.dataGridView1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(248, 9);
+            this.label1.Location = new System.Drawing.Point(186, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(514, 48);
+            this.label1.Size = new System.Drawing.Size(418, 39);
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome to the Apllication";
-            // 
-            // addBtn
-            // 
-            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBtn.Location = new System.Drawing.Point(13, 79);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(170, 102);
-            this.addBtn.TabIndex = 2;
-            this.addBtn.Text = "ADD";
-            this.addBtn.UseVisualStyleBackColor = true;
-            // 
-            // editBtn
-            // 
-            this.editBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editBtn.Location = new System.Drawing.Point(13, 187);
-            this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(170, 66);
-            this.editBtn.TabIndex = 3;
-            this.editBtn.Text = "EDIT";
-            this.editBtn.UseVisualStyleBackColor = true;
-            this.editBtn.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteBtn.Location = new System.Drawing.Point(13, 259);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(170, 65);
-            this.deleteBtn.TabIndex = 4;
-            this.deleteBtn.Text = "DELETE";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            // 
-            // refreshBtn
-            // 
-            this.refreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshBtn.Location = new System.Drawing.Point(13, 330);
-            this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(170, 108);
-            this.refreshBtn.TabIndex = 5;
-            this.refreshBtn.Text = "REFRESH";
-            this.refreshBtn.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(814, 64);
+            this.comboBox1.Items.AddRange(new object[] {
+            "ALL",
+            "STUDENT",
+            "TEACHER",
+            "ADMIN"});
+            this.comboBox1.Location = new System.Drawing.Point(610, 68);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(173, 24);
+            this.comboBox1.Size = new System.Drawing.Size(131, 21);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton3,
+            this.editBtn,
+            this.deleteBtn,
+            this.refreshBtn});
+            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.toolStrip1.Location = new System.Drawing.Point(7, 76);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.Size = new System.Drawing.Size(171, 358);
+            this.toolStrip1.TabIndex = 7;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButton3
+            // 
+            this.toolStripDropDownButton3.AutoSize = false;
+            this.toolStripDropDownButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8,
+            this.toolStripMenuItem9});
+            this.toolStripDropDownButton3.Font = new System.Drawing.Font("Segoe UI", 17F);
+            this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
+            this.toolStripDropDownButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
+            this.toolStripDropDownButton3.Size = new System.Drawing.Size(170, 102);
+            this.toolStripDropDownButton3.Text = "ADD";
+            this.toolStripDropDownButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripDropDownButton3.Click += new System.EventHandler(this.toolStripDropDownButton3_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(272, 36);
+            this.toolStripMenuItem7.Text = "STUDENT";
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(272, 36);
+            this.toolStripMenuItem8.Text = "TEACHER";
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(272, 36);
+            this.toolStripMenuItem9.Text = "ADMINISTRATION";
+            // 
+            // editBtn
+            // 
+            this.editBtn.AutoSize = false;
+            this.editBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.editBtn.Image = ((System.Drawing.Image)(resources.GetObject("editBtn.Image")));
+            this.editBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.editBtn.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.editBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Size = new System.Drawing.Size(170, 70);
+            this.editBtn.Text = "EDIT";
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.AutoSize = false;
+            this.deleteBtn.Image = ((System.Drawing.Image)(resources.GetObject("deleteBtn.Image")));
+            this.deleteBtn.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.deleteBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(170, 70);
+            this.deleteBtn.Text = "DELETE";
+            this.deleteBtn.Click += new System.EventHandler(this.toolStripSplitButton1_Click);
+            // 
+            // refreshBtn
+            // 
+            this.refreshBtn.AutoSize = false;
+            this.refreshBtn.Image = ((System.Drawing.Image)(resources.GetObject("refreshBtn.Image")));
+            this.refreshBtn.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.refreshBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(170, 102);
+            this.refreshBtn.Text = "REFRESH";
+            this.refreshBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
             // MainWIndow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(999, 450);
+            this.ClientSize = new System.Drawing.Size(749, 449);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.refreshBtn);
-            this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.editBtn);
-            this.Controls.Add(this.addBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainWIndow";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,11 +192,15 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button addBtn;
-        private System.Windows.Forms.Button editBtn;
-        private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.Button refreshBtn;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripButton editBtn;
+        private System.Windows.Forms.ToolStripButton refreshBtn;
+        private System.Windows.Forms.ToolStripButton deleteBtn;
     }
 }
 
