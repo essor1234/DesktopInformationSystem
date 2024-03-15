@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetBasicData.cs">
+    <Compile Include="GetStudentData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GetBasicData.Designer.cs">
-      <DependentUpon>GetBasicData.cs</DependentUpon>
+    <Compile Include="GetStudentData.Designer.cs">
+      <DependentUpon>GetStudentData.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWIndow.cs">
       <SubType>Form</SubType>
@@ -60,8 +60,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GetBasicData.resx">
-      <DependentUpon>GetBasicData.cs</DependentUpon>
+    <EmbeddedResource Include="GetStudentData.resx">
+      <DependentUpon>GetStudentData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWIndow.resx">
       <DependentUpon>MainWIndow.cs</DependentUpon>

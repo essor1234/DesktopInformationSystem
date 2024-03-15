@@ -16,8 +16,8 @@ namespace DesktopInformationSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            /*Application.Run(new GetBasicData());*/
-            Application.Run(new MainWIndow());
+            Application.Run(new GetStudentData());
+            /*Application.Run(new MainWIndow());*/
         }
     }
 }
