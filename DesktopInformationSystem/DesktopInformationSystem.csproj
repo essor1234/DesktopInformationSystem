@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetAdminData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetAdminData.Designer.cs">
+      <DependentUpon>GetAdminData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetTeacherData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetTeacherData.Designer.cs">
+      <DependentUpon>GetTeacherData.cs</DependentUpon>
+    </Compile>
     <Compile Include="GetStudentData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,8 +72,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GetAdminData.resx">
+      <DependentUpon>GetAdminData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GetStudentData.resx">
       <DependentUpon>GetStudentData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetTeacherData.resx">
+      <DependentUpon>GetTeacherData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWIndow.resx">
       <DependentUpon>MainWIndow.cs</DependentUpon>

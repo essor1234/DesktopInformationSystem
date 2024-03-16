@@ -47,27 +47,28 @@
             // 
             this.nameLbl.AutoSize = true;
             this.nameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLbl.Location = new System.Drawing.Point(11, 43);
-            this.nameLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.nameLbl.Location = new System.Drawing.Point(12, 58);
             this.nameLbl.Name = "nameLbl";
-            this.nameLbl.Size = new System.Drawing.Size(94, 31);
+            this.nameLbl.Size = new System.Drawing.Size(117, 39);
             this.nameLbl.TabIndex = 0;
             this.nameLbl.Text = "Name:";
             // 
             // nameBox
             // 
             this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameBox.Location = new System.Drawing.Point(122, 47);
+            this.nameBox.Location = new System.Drawing.Point(160, 63);
+            this.nameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(185, 30);
+            this.nameBox.Size = new System.Drawing.Size(245, 36);
             this.nameBox.TabIndex = 1;
             // 
             // teleBox
             // 
             this.teleBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teleBox.Location = new System.Drawing.Point(166, 119);
+            this.teleBox.Location = new System.Drawing.Point(218, 151);
+            this.teleBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.teleBox.Name = "teleBox";
-            this.teleBox.Size = new System.Drawing.Size(185, 30);
+            this.teleBox.Size = new System.Drawing.Size(245, 36);
             this.teleBox.TabIndex = 3;
             this.teleBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -75,10 +76,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 116);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(12, 148);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 31);
+            this.label1.Size = new System.Drawing.Size(188, 39);
             this.label1.TabIndex = 2;
             this.label1.Text = "Telephone:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -86,19 +86,19 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(122, 187);
+            this.textBox1.Location = new System.Drawing.Point(160, 235);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 30);
+            this.textBox1.Size = new System.Drawing.Size(245, 36);
             this.textBox1.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 183);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(12, 230);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 31);
+            this.label2.Size = new System.Drawing.Size(112, 39);
             this.label2.TabIndex = 4;
             this.label2.Text = "Email:";
             // 
@@ -106,10 +106,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 246);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(12, 308);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(259, 25);
+            this.label3.Size = new System.Drawing.Size(330, 29);
             this.label3.TabIndex = 6;
             this.label3.Text = "Curent Subject (required 2): ";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -117,53 +116,57 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(286, 250);
+            this.comboBox1.Location = new System.Drawing.Point(378, 313);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(160, 24);
             this.comboBox1.TabIndex = 7;
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(444, 250);
+            this.comboBox2.Location = new System.Drawing.Point(589, 313);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.Size = new System.Drawing.Size(160, 24);
             this.comboBox2.TabIndex = 8;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(444, 307);
+            this.comboBox3.Location = new System.Drawing.Point(589, 383);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.Size = new System.Drawing.Size(160, 24);
             this.comboBox3.TabIndex = 11;
             // 
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(286, 307);
+            this.comboBox4.Location = new System.Drawing.Point(378, 383);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.Size = new System.Drawing.Size(160, 24);
             this.comboBox4.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 303);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(12, 378);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(276, 25);
+            this.label4.Size = new System.Drawing.Size(354, 29);
             this.label4.TabIndex = 9;
             this.label4.Text = "Previous Subject (required 2): ";
             // 
             // confirmBtn
             // 
             this.confirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmBtn.Location = new System.Drawing.Point(166, 366);
+            this.confirmBtn.Location = new System.Drawing.Point(221, 450);
+            this.confirmBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.confirmBtn.Name = "confirmBtn";
-            this.confirmBtn.Size = new System.Drawing.Size(251, 45);
+            this.confirmBtn.Size = new System.Drawing.Size(335, 55);
             this.confirmBtn.TabIndex = 12;
             this.confirmBtn.Text = "CONFIRM";
             this.confirmBtn.UseVisualStyleBackColor = true;
@@ -171,9 +174,9 @@
             // 
             // GetStudentData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 436);
+            this.ClientSize = new System.Drawing.Size(820, 537);
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox4);
@@ -187,7 +190,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.nameLbl);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GetStudentData";
             this.Text = "Adding Student Data";
             this.Load += new System.EventHandler(this.GetStudentData_Load);
