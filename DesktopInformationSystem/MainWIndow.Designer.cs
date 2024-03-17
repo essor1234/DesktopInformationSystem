@@ -34,9 +34,9 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.studentBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.teacherBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.adminBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.editBtn = new System.Windows.Forms.ToolStripButton();
             this.deleteBtn = new System.Windows.Forms.ToolStripButton();
             this.refreshBtn = new System.Windows.Forms.ToolStripButton();
@@ -94,7 +94,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(9, 94);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(171, 358);
+            this.toolStrip1.Size = new System.Drawing.Size(171, 382);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -102,9 +102,9 @@
             // 
             this.toolStripDropDownButton3.AutoSize = false;
             this.toolStripDropDownButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8,
-            this.toolStripMenuItem9});
+            this.studentBtn,
+            this.teacherBtn,
+            this.adminBtn});
             this.toolStripDropDownButton3.Font = new System.Drawing.Font("Segoe UI", 17F);
             this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
             this.toolStripDropDownButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -115,23 +115,26 @@
             this.toolStripDropDownButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripDropDownButton3.Click += new System.EventHandler(this.toolStripDropDownButton3_Click);
             // 
-            // toolStripMenuItem7
+            // studentBtn
             // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(342, 44);
-            this.toolStripMenuItem7.Text = "STUDENT";
+            this.studentBtn.Name = "studentBtn";
+            this.studentBtn.Size = new System.Drawing.Size(342, 44);
+            this.studentBtn.Text = "STUDENT";
+            this.studentBtn.Click += new System.EventHandler(this.studentBtn_Click);
             // 
-            // toolStripMenuItem8
+            // teacherBtn
             // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(342, 44);
-            this.toolStripMenuItem8.Text = "TEACHER";
+            this.teacherBtn.Name = "teacherBtn";
+            this.teacherBtn.Size = new System.Drawing.Size(342, 44);
+            this.teacherBtn.Text = "TEACHER";
+            this.teacherBtn.Click += new System.EventHandler(this.teacherBtn_Click);
             // 
-            // toolStripMenuItem9
+            // adminBtn
             // 
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(342, 44);
-            this.toolStripMenuItem9.Text = "ADMINISTRATION";
+            this.adminBtn.Name = "adminBtn";
+            this.adminBtn.Size = new System.Drawing.Size(342, 44);
+            this.adminBtn.Text = "ADMINISTRATION";
+            this.adminBtn.Click += new System.EventHandler(this.adminBtn_Click);
             // 
             // editBtn
             // 
@@ -194,9 +197,9 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem studentBtn;
+        private System.Windows.Forms.ToolStripMenuItem teacherBtn;
+        private System.Windows.Forms.ToolStripMenuItem adminBtn;
         private System.Windows.Forms.ToolStripButton editBtn;
         private System.Windows.Forms.ToolStripButton refreshBtn;
         private System.Windows.Forms.ToolStripButton deleteBtn;

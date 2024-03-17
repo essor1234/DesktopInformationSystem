@@ -37,5 +37,23 @@ namespace DesktopInformationSystem
         {
 
         }
+
+        private void studentBtn_Click(object sender, EventArgs e)
+        {
+            GetStudentData studentWin = new GetStudentData();
+            studentWin.ShowDialog();
+        }
+
+        private void teacherBtn_Click(object sender, EventArgs e)
+        {
+            GetTeacherData teacherWin = new GetTeacherData();
+            teacherWin.ShowDialog();
+        }
+
+        private void adminBtn_Click(object sender, EventArgs e)
+        {
+            GetAdminData adminWin = new GetAdminData();
+            adminWin.ShowDialog();
+        }
     }
 }
