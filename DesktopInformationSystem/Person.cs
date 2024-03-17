@@ -46,9 +46,9 @@ namespace DesktopInformationSystem
         }
 
         // Polimorphism
-        public virtual string GetDisplayText()
+        public virtual string[] GetDisplayText()
         {
-            return $"Name: {Name}, Email: {Email}, Telephone: {Telephone}, Role: {Role}";
+            return new string[] { Name, Email, Telephone, Role.ToString() };
         }
     }
 
@@ -84,7 +84,7 @@ namespace DesktopInformationSystem
         }
 
         // polymorphism
-        public override string GetDisplayText()
+        public override string[] GetDisplayText()
         {
             return base.GetDisplayText();
         }
@@ -116,7 +116,7 @@ namespace DesktopInformationSystem
             set { workHours = value; }
         }
 
-        public override string GetDisplayText()
+        public override string[] GetDisplayText()
         {
             return base.GetDisplayText();
         }
@@ -146,7 +146,7 @@ namespace DesktopInformationSystem
             set { subject2 = value; }
         }
 
-        public override string GetDisplayText()
+        public override string[] GetDisplayText()
         {
             return base.GetDisplayText();
         }

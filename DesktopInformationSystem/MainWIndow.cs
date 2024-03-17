@@ -12,10 +12,12 @@ namespace DesktopInformationSystem
 {
     public partial class MainWIndow : Form
     {
+        private List<Student> students;
         public MainWIndow()
         {
             InitializeComponent();
             comboBox1.Text = "ALL";
+            this.students = students;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -54,6 +56,11 @@ namespace DesktopInformationSystem
         {
             GetAdminData adminWin = new GetAdminData();
             adminWin.ShowDialog();
+        }
+
+        private void refreshBtn_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = students;
         }
     }
 }

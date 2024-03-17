@@ -12,6 +12,7 @@ namespace DesktopInformationSystem
 {
     public partial class GetStudentData : Form
     {
+        List<Student> students = new List<Student>();
         public GetStudentData()
         {
             InitializeComponent();
@@ -64,6 +65,40 @@ namespace DesktopInformationSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Student student = new Student();
+            // check if namebox consists of letters only
+            if (System.Text.RegularExpressions.Regex.IsMatch(nameBox.Text, @"^[a-zA-Z]+$"))
+            {
+                student.Name = nameBox.Text;
+            }
+            else
+            {
+                // Handle the case where the name contains non-letter characters
+                MessageBox.Show("Name should consist of letters only.");
+
+            }
+
+            // Get the role student
+            student.Role = Role.Student;
+
+            // Get the phone
+            student.Telephone = teleBox.Text;
+
+            // Get the email
+            student.Email = emailBox.Text;
+
+            // Get the previous subject
+            student.PreSubj1 = comboBox1.Text;
+            student.PreSubj2 = comboBox2.Text;
+
+            // Get the current subject
+            student.CurSubj1 = comboBox3.Text;
+            student.CurSubj2 = comboBox4.Text;
+
+            // Add into the database
+            students.Add(student);
+            MessageBox.Show("Added");
+
 
         }
 
