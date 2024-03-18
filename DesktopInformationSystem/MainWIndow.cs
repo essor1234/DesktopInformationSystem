@@ -13,11 +13,16 @@ namespace DesktopInformationSystem
     public partial class MainWIndow : Form
     {
         private List<Student> students;
+        private List<Teacher> teachers;
+        private List<Admin> admins;
+
         public MainWIndow()
         {
             InitializeComponent();
             comboBox1.Text = "ALL";
-            this.students = students;
+            this.students = GetStudentData.students;
+            this.teachers = GetTeacherData.teachers;
+            this.admins = GetAdminData.admins;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,7 +65,31 @@ namespace DesktopInformationSystem
 
         private void refreshBtn_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = students;
+            dataGridView1.Rows.Clear();
+
+            foreach (var student in students)
+            {
+                var cellValues = student.GetDisplayText();
+                dataGridView1.Rows.Add(cellValues);
+            }
+
+            foreach (var teacher in teachers)
+            {
+                var cellValues = teacher.GetDisplayText();
+                dataGridView1.Rows.Add(cellValues);
+            }
+
+            foreach (var admin in admins)
+            {
+                var cellValues = admin.GetDisplayText();
+                dataGridView1.Rows.Add(cellValues);
+            }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

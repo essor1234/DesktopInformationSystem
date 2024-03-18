@@ -48,7 +48,7 @@ namespace DesktopInformationSystem
         // Polimorphism
         public virtual string[] GetDisplayText()
         {
-            return new string[] { Name, Email, Telephone, Role.ToString() };
+            return new string[] { Name, Telephone, Email, Role.ToString() };
         }
     }
 

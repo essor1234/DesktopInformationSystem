@@ -12,7 +12,7 @@ namespace DesktopInformationSystem
 {
     public partial class GetStudentData : Form
     {
-        List<Student> students = new List<Student>();
+        public static List<Student> students = new List<Student>();
         public GetStudentData()
         {
             InitializeComponent();

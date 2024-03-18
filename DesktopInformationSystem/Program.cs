@@ -18,6 +18,7 @@ namespace DesktopInformationSystem
             Application.SetCompatibleTextRenderingDefault(false);
             /*Application.Run(new GetStudentData());*/
             Application.Run(new MainWIndow());
+
         }
     }
 }
