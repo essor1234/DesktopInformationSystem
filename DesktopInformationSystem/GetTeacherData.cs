@@ -15,9 +15,30 @@ namespace DesktopInformationSystem
     {
         public static List<Teacher> teachers = new List<Teacher>();
 
-        public GetTeacherData()
+        // Variavle for getting teacher to update and mode(between adding and updating)
+        private Teacher currentTeacher;
+        private string mode;
+
+        public GetTeacherData(string mode, Teacher teacher = null)
         {
             InitializeComponent();
+
+            this.mode = mode;
+            this.currentTeacher = teacher;
+
+            if (mode == "Update" && teacher != null)
+            {
+                // Fill the form with the current student's data
+
+                nameBox.Text = teacher.Name;
+                teleBox.Text = teacher.Telephone;
+                emailBox.Text = teacher.Email;
+                comboBox1.Text = teacher.Subject1;
+                comboBox2.Text = teacher.Subject2;
+                
+
+
+            }
         }
 
         private void GetTeacherData_Load(object sender, EventArgs e)
@@ -27,7 +48,21 @@ namespace DesktopInformationSystem
 
         private void confirmBtn_Click(object sender, EventArgs e)
         {
-            Teacher teacher = new Teacher();
+            Teacher teacher = null;
+            // Choosing mode for update or adding
+            if (mode == "Update" && currentTeacher != null)
+            {
+                // If we're updating, we want to modify the existing student
+                teacher = currentTeacher;
+            }
+            else
+            {
+                // Otherwise, we're adding a new student
+                teacher = new Teacher();
+                teachers.Add(teacher);
+            }
+
+
             // check if namebox consists of letters only
             if (System.Text.RegularExpressions.Regex.IsMatch(nameBox.Text, @"^[a-zA-Z]+$"))
             {
@@ -56,9 +91,15 @@ namespace DesktopInformationSystem
             teacher.Subject1 = comboBox1.Text;
             teacher.Subject2 = comboBox2.Text;
 
-            // Add into the database
-            teachers.Add(teacher);
-            MessageBox.Show("Added");
+            // Show a message depending on the mode
+            if (mode == "Update")
+            {
+                MessageBox.Show("Updated");
+            }
+            else
+            {
+                MessageBox.Show("Added");
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

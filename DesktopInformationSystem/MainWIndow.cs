@@ -37,7 +37,23 @@ namespace DesktopInformationSystem
 
         private void toolStripSplitButton1_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
+            {
+                // Get the Id of the selected item
+                string id = item.Cells["Id"].Value.ToString();
 
+                // Remove from the corresponding list
+                if (students.RemoveAll(s => s.Id == id) == 0)
+                {
+                    if (teachers.RemoveAll(t => t.Id == id) == 0)
+                    {
+                        admins.RemoveAll(a => a.Id == id);
+                    }
+                }
+
+                // Remove from the grid view
+                dataGridView1.Rows.RemoveAt(item.Index);
+            }
         }
 
         private void toolStripDropDownButton3_Click(object sender, EventArgs e)
@@ -47,19 +63,19 @@ namespace DesktopInformationSystem
 
         private void studentBtn_Click(object sender, EventArgs e)
         {
-            GetStudentData studentWin = new GetStudentData();
+            GetStudentData studentWin = new GetStudentData("Add");
             studentWin.ShowDialog();
         }
 
         private void teacherBtn_Click(object sender, EventArgs e)
         {
-            GetTeacherData teacherWin = new GetTeacherData();
+            GetTeacherData teacherWin = new GetTeacherData("Add");
             teacherWin.ShowDialog();
         }
 
         private void adminBtn_Click(object sender, EventArgs e)
         {
-            GetAdminData adminWin = new GetAdminData();
+            GetAdminData adminWin = new GetAdminData("Add");
             adminWin.ShowDialog();
         }
 
@@ -91,5 +107,43 @@ namespace DesktopInformationSystem
         {
 
         }
+
+        private void editBtn_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
+            {
+                // Get the Id and Role of the selected item
+                string role = item.Cells["Role"].Value.ToString();
+                string id = item.Cells["Id"].Value.ToString();
+
+                // Find the item to update
+                Person personToUpdate = null;
+                switch (role)
+                {
+                    case "Student":
+                        personToUpdate = students.FirstOrDefault(s => s.Id == id);
+                        if (personToUpdate != null)
+                        {
+                            GetStudentData form = new GetStudentData("Update", (Student)personToUpdate);
+                            form.ShowDialog();
+                        }
+                        break;
+                    case "Teacher":
+                        personToUpdate = teachers.FirstOrDefault(t => t.Id == id);
+                        if (personToUpdate != null)
+                        {
+                            GetTeacherData form = new GetTeacherData("Update", (Teacher)personToUpdate);
+                            form.ShowDialog();
+                        }
+                        break;
+                    case "Administration":
+                        personToUpdate = admins.FirstOrDefault(a => a.Id == id);
+                        if (personToUpdate != null)
+                        {
+                            GetAdminData form = new GetAdminData("Update", (Admin)personToUpdate);
+                            form.ShowDialog();
+                        }
+                        break;
+                }   }   }
     }
 }

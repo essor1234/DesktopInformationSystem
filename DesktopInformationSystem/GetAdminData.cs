@@ -15,14 +15,51 @@ namespace DesktopInformationSystem
     {
         public static List<Admin> admins = new List<Admin>();
 
-        public GetAdminData()
+        // Variavle for getting student to update and mode(between adding and updating)
+        private Admin currentAdmin;
+        private string mode;
+
+        public GetAdminData(string mode, Admin admin = null)
         {
             InitializeComponent();
+            this.mode = mode;
+            this.currentAdmin = admin;
+
+            if (mode == "Update" && admin != null)
+            {
+                // Fill the form with the current student's data
+
+                nameBox.Text = admin.Name;
+                teleBox.Text = admin.Telephone;
+                emailBox.Text = admin.Email;
+                positionCombo.Text = admin.Position;
+                salaryNum.Text = Convert.ToString(admin.Salary);
+                workBox.Text = Convert.ToString(admin.WorkHours);
+
+
+            }
+
+
+
         }
 
         private void confirmBtn_Click(object sender, EventArgs e)
         {
-            Admin admin = new Admin();
+            Admin admin = null;
+
+            // Choosing mode for update or adding
+            if (mode == "Update" && currentAdmin != null)
+            {
+                // If we're updating, we want to modify the existing student
+                admin = currentAdmin;
+            }
+            else
+            {
+                // Otherwise, we're adding a new student
+                admin = new Admin();
+                admins.Add(admin);
+            }
+
             // check if namebox consists of letters only
             if (System.Text.RegularExpressions.Regex.IsMatch(nameBox.Text, @"^[a-zA-Z]+$"))
             {
@@ -62,9 +99,15 @@ namespace DesktopInformationSystem
 
             }
 
-            // Add into the database
-            admins.Add(admin);
-            MessageBox.Show("Added");
+            // Show a message depending on the mode
+            if (mode == "Update")
+            {
+                MessageBox.Show("Updated");
+            }
+            else
+            {
+                MessageBox.Show("Added");
+            }
         }
     }
 }

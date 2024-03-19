@@ -15,11 +15,26 @@ namespace DesktopInformationSystem
     }
     public class Person
     {
+
         // private datas
+        private string id = string.Empty;
         private string name = string.Empty;
         private string telephone = string.Empty;
         private string email = string.Empty;
         private Role role;
+        private static int nextId = 1; 
+
+        public string Id // Modify this property
+        {
+            get { return id; }
+            private set { id = value; } // Make the setter private
+        }
+
+        public Person() // Add this constructor
+        {
+            Id = nextId.ToString();
+            nextId++;
+        }
 
         public string Name
         {
@@ -48,7 +63,7 @@ namespace DesktopInformationSystem
         // Polimorphism
         public virtual string[] GetDisplayText()
         {
-            return new string[] { Name, Telephone, Email, Role.ToString() };
+            return new string[] { Id, Name, Telephone, Email, Role.ToString() };
         }
     }
 
