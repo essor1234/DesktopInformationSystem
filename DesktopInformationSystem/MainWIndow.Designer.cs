@@ -36,7 +36,7 @@
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.displayBox = new System.Windows.Forms.ComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
             this.studentBtn = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,20 +116,20 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome to the Apllication";
             // 
-            // comboBox1
+            // displayBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.displayBox.FormattingEnabled = true;
+            this.displayBox.Items.AddRange(new object[] {
             "ALL",
             "STUDENT",
             "TEACHER",
             "ADMIN"});
-            this.comboBox1.Location = new System.Drawing.Point(813, 84);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(173, 24);
-            this.comboBox1.TabIndex = 6;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.displayBox.Location = new System.Drawing.Point(813, 84);
+            this.displayBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.displayBox.Name = "displayBox";
+            this.displayBox.Size = new System.Drawing.Size(173, 24);
+            this.displayBox.TabIndex = 6;
+            this.displayBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // toolStrip1
             // 
@@ -148,7 +148,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(9, 94);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(171, 400);
+            this.toolStrip1.Size = new System.Drawing.Size(171, 376);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -247,7 +247,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1076, 553);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.displayBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -265,7 +265,7 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox displayBox;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;
         private System.Windows.Forms.ToolStripMenuItem studentBtn;

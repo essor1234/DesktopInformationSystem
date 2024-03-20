@@ -19,7 +19,7 @@ namespace DesktopInformationSystem
         public MainWIndow()
         {
             InitializeComponent();
-            comboBox1.Text = "ALL";
+            displayBox.Text = "ALL";
             this.students = GetStudentData.students;
             this.teachers = GetTeacherData.teachers;
             this.admins = GetAdminData.admins;
@@ -83,6 +83,46 @@ namespace DesktopInformationSystem
         {
             dataGridView1.Rows.Clear();
 
+            string displayOption = displayBox.Text;
+
+            if (displayOption.Equals("ALL"))
+            {
+                displayAll();
+            }else if (displayOption.Equals("TEACHER"))
+            {
+                displayRole("Teacher");
+            }
+            else if (displayOption.Equals("STUDENT"))
+            {
+                displayRole("Student");
+            }
+            else if (displayOption.Equals("ADMIN"))
+            {
+                displayRole("Admin");
+            }
+
+            /*foreach (var student in students)
+            {
+                var cellValues = student.GetDisplayText();
+                dataGridView1.Rows.Add(cellValues);
+            }
+
+            foreach (var teacher in teachers)
+            {
+                var cellValues = teacher.GetDisplayText();
+                dataGridView1.Rows.Add(cellValues);
+            }
+
+            foreach (var admin in admins)
+            {
+                var cellValues = admin.GetDisplayText();
+                dataGridView1.Rows.Add(cellValues);
+            }*/
+
+        }
+
+        private void displayAll()
+        {
             foreach (var student in students)
             {
                 var cellValues = student.GetDisplayText();
@@ -100,7 +140,39 @@ namespace DesktopInformationSystem
                 var cellValues = admin.GetDisplayText();
                 dataGridView1.Rows.Add(cellValues);
             }
+        }
 
+        private void displayRole(String role)
+        {
+            if (role.Equals("Teacher"))
+            {
+                foreach (var teacher in teachers)
+                {
+                    var cellValues = teacher.GetDisplayText();
+                    dataGridView1.Rows.Add(cellValues);
+                }
+
+
+            }
+            else if (role.Equals("Student"))
+            {
+                foreach (var student in students)
+                {
+                    var cellValues = student.GetDisplayText();
+                    dataGridView1.Rows.Add(cellValues);
+                }
+
+            } else if (role.Equals("Admin"))
+            {
+                foreach (var admin in admins)
+                {
+                    var cellValues = admin.GetDisplayText();
+                    dataGridView1.Rows.Add(cellValues);
+                }
+            }else
+            {
+                MessageBox.Show("Please choose a appropriate Role");
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
