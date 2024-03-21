@@ -101,7 +101,7 @@ namespace DesktopInformationSystem
             {
                 // Otherwise, we're adding a new student
                 student = new Student();
-                students.Add(student);
+                /*students.Add(student);*/
             }
 
 
@@ -135,6 +135,9 @@ namespace DesktopInformationSystem
             student.CurSubj1 = comboBox3.Text;
             student.CurSubj2 = comboBox4.Text;
 
+            SqliteDataAccess.SaveStudent(student);
+
+
             // Show a message depending on the mode
             if (mode == "Update")
             {
@@ -142,6 +145,7 @@ namespace DesktopInformationSystem
             }
             else
             {
+                
                 MessageBox.Show("Added");
             }
 

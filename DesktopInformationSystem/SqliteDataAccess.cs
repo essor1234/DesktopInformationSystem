@@ -17,9 +17,9 @@ namespace DesktopInformationSystem
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<Student>("SELECT User.*, Student.* FROM User " +
-                                                "INNER JOIN Student " +
-                                                "ON User.Id = Student.Userid;", new DynamicParameters());
+                var output = cnn.Query<Student>("SELECT User.Id, User.Name, User.Phone, User.Role, User.Email, Student.CurrentSubject1, Student.CurrentSubject2, Student.PreviousSubject1, Student.PreviousSubject2 FROM User " +
+                                        "INNER JOIN Student " +
+                                        "ON User.Id = Student.UserId;", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -47,12 +47,40 @@ namespace DesktopInformationSystem
         }
 
         // Save methods
-        public static void SaveStudent(Student student) 
-        { 
+        public static void SaveStudent(Student student)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
 
+                using (var transaction = cnn.BeginTransaction())
+                {
+                    var parameters = new
+                    {
+                        Name = student.Name,
+                        Phone = student.Telephone,
+                        Role = student.Role.ToString(),
+                        Email = student.Email,
+                        CurrentSubject1 = student.CurSubj1,
+                        CurrentSubject2 = student.CurSubj2,
+                        PreviousSubject1 = student.PreSubj1,
+                        PreviousSubject2 = student.PreSubj2
+                    };
+
+                    cnn.Execute("INSERT INTO User (Name, Phone, Role, Email)" +
+                                "VALUES (@Name, @Phone, @Role, @Email);", parameters);
+
+                    cnn.Execute("INSERT INTO `Student` (UserId, CurrentSubject1, CurrentSubject2, PreviousSubject1, PreviousSubject2)" +
+                        "VALUES (last_insert_rowid(), @CurrentSubject1, @CurrentSubject2, @PreviousSubject1, @PreviousSubject2);", parameters);
+
+                    transaction.Commit();
+                }
+            }
         }
 
-        public static void SaveTeacher(Teacher teacher)
+    
+
+    public static void SaveTeacher(Teacher teacher)
         {
 
         }

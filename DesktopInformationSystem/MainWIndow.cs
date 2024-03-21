@@ -12,16 +12,19 @@ namespace DesktopInformationSystem
 {
     public partial class MainWIndow : Form
     {
-        private List<Student> students;
-        private List<Teacher> teachers;
+/*        private List<Student> students;
+*/        private List<Teacher> teachers;
         private List<Admin> admins;
+        List<Student> students = new List<Student>();
+
 
         public MainWIndow()
         {
             InitializeComponent();
             displayBox.Text = "ALL";
-            this.students = GetStudentData.students;
-            this.teachers = GetTeacherData.teachers;
+/*            this.students = GetStudentData.students;
+ *            
+*/            this.teachers = GetTeacherData.teachers;
             this.admins = GetAdminData.admins;
         }
 
@@ -144,6 +147,10 @@ namespace DesktopInformationSystem
 
         private void displayRole(String role)
         {
+            // testing here
+            students = SqliteDataAccess.LoadStudent();
+
+
             if (role.Equals("Teacher"))
             {
                 foreach (var teacher in teachers)
