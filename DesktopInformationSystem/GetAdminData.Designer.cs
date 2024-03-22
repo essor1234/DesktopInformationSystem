@@ -47,9 +47,10 @@
             // confirmBtn
             // 
             this.confirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmBtn.Location = new System.Drawing.Point(176, 388);
+            this.confirmBtn.Location = new System.Drawing.Point(235, 478);
+            this.confirmBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.confirmBtn.Name = "confirmBtn";
-            this.confirmBtn.Size = new System.Drawing.Size(251, 45);
+            this.confirmBtn.Size = new System.Drawing.Size(335, 55);
             this.confirmBtn.TabIndex = 13;
             this.confirmBtn.Text = "CONFIRM";
             this.confirmBtn.UseVisualStyleBackColor = true;
@@ -58,57 +59,57 @@
             // emailBox
             // 
             this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailBox.Location = new System.Drawing.Point(120, 178);
+            this.emailBox.Location = new System.Drawing.Point(160, 219);
+            this.emailBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.emailBox.Name = "emailBox";
-            this.emailBox.Size = new System.Drawing.Size(185, 30);
+            this.emailBox.Size = new System.Drawing.Size(245, 36);
             this.emailBox.TabIndex = 19;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 174);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(12, 214);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 31);
+            this.label2.Size = new System.Drawing.Size(112, 39);
             this.label2.TabIndex = 18;
             this.label2.Text = "Email:";
             // 
             // teleBox
             // 
             this.teleBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.teleBox.Location = new System.Drawing.Point(164, 110);
+            this.teleBox.Location = new System.Drawing.Point(219, 135);
+            this.teleBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.teleBox.Name = "teleBox";
-            this.teleBox.Size = new System.Drawing.Size(155, 30);
+            this.teleBox.Size = new System.Drawing.Size(205, 36);
             this.teleBox.TabIndex = 17;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 107);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(12, 132);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 31);
+            this.label1.Size = new System.Drawing.Size(188, 39);
             this.label1.TabIndex = 16;
             this.label1.Text = "Telephone:";
             // 
             // nameBox
             // 
             this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameBox.Location = new System.Drawing.Point(120, 38);
+            this.nameBox.Location = new System.Drawing.Point(160, 47);
+            this.nameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(185, 30);
+            this.nameBox.Size = new System.Drawing.Size(245, 36);
             this.nameBox.TabIndex = 15;
             // 
             // nameLbl
             // 
             this.nameLbl.AutoSize = true;
             this.nameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLbl.Location = new System.Drawing.Point(9, 34);
-            this.nameLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.nameLbl.Location = new System.Drawing.Point(12, 42);
             this.nameLbl.Name = "nameLbl";
-            this.nameLbl.Size = new System.Drawing.Size(94, 31);
+            this.nameLbl.Size = new System.Drawing.Size(117, 39);
             this.nameLbl.TabIndex = 14;
             this.nameLbl.Text = "Name:";
             // 
@@ -120,10 +121,10 @@
             0,
             0,
             0});
-            this.salaryNum.Location = new System.Drawing.Point(429, 236);
-            this.salaryNum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.salaryNum.Location = new System.Drawing.Point(572, 290);
+            this.salaryNum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.salaryNum.Maximum = new decimal(new int[] {
-            5000,
+            500000,
             0,
             0,
             0});
@@ -133,7 +134,7 @@
             0,
             0});
             this.salaryNum.Name = "salaryNum";
-            this.salaryNum.Size = new System.Drawing.Size(135, 30);
+            this.salaryNum.Size = new System.Drawing.Size(180, 36);
             this.salaryNum.TabIndex = 20;
             this.salaryNum.Value = new decimal(new int[] {
             5000,
@@ -145,10 +146,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(318, 236);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(424, 290);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 31);
+            this.label3.Size = new System.Drawing.Size(123, 39);
             this.label3.TabIndex = 21;
             this.label3.Text = "Salary:";
             // 
@@ -156,10 +156,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 310);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(12, 382);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(201, 31);
+            this.label4.Size = new System.Drawing.Size(251, 39);
             this.label4.TabIndex = 22;
             this.label4.Text = "Working Hours:";
             // 
@@ -167,10 +166,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 239);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(12, 294);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 31);
+            this.label5.Size = new System.Drawing.Size(148, 39);
             this.label5.TabIndex = 23;
             this.label5.Text = "Position:";
             // 
@@ -181,25 +179,26 @@
             this.positionCombo.Items.AddRange(new object[] {
             "Full-TIme",
             "Part-Time"});
-            this.positionCombo.Location = new System.Drawing.Point(124, 239);
-            this.positionCombo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.positionCombo.Location = new System.Drawing.Point(165, 294);
+            this.positionCombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.positionCombo.Name = "positionCombo";
-            this.positionCombo.Size = new System.Drawing.Size(134, 33);
+            this.positionCombo.Size = new System.Drawing.Size(177, 37);
             this.positionCombo.TabIndex = 24;
             // 
             // workBox
             // 
             this.workBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.workBox.Location = new System.Drawing.Point(217, 310);
+            this.workBox.Location = new System.Drawing.Point(289, 382);
+            this.workBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.workBox.Name = "workBox";
-            this.workBox.Size = new System.Drawing.Size(155, 30);
+            this.workBox.Size = new System.Drawing.Size(205, 36);
             this.workBox.TabIndex = 25;
             // 
             // GetAdminData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 454);
+            this.ClientSize = new System.Drawing.Size(800, 559);
             this.Controls.Add(this.workBox);
             this.Controls.Add(this.positionCombo);
             this.Controls.Add(this.label5);
@@ -213,7 +212,7 @@
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.nameLbl);
             this.Controls.Add(this.confirmBtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GetAdminData";
             this.Text = "GetAdminData";
             ((System.ComponentModel.ISupportInitialize)(this.salaryNum)).EndInit();

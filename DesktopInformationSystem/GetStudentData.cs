@@ -33,10 +33,10 @@ namespace DesktopInformationSystem
                 nameBox.Text = student.Name;
                 teleBox.Text = student.Telephone;
                 emailBox.Text = student.Email;
-                comboBox1.Text = student.PreSubj1;
-                comboBox2.Text = student.PreSubj2;
-                comboBox3.Text = student.CurSubj1;
-                comboBox4.Text = student.CurSubj2;
+                comboBox4.Text = student.PreSubj1;
+                comboBox3.Text = student.PreSubj2;
+                comboBox1.Text = student.CurSubj1;
+                comboBox2.Text = student.CurSubj2;
 
                 
             }
@@ -135,17 +135,17 @@ namespace DesktopInformationSystem
             student.CurSubj1 = comboBox3.Text;
             student.CurSubj2 = comboBox4.Text;
 
-            SqliteDataAccess.SaveStudent(student);
 
 
             // Show a message depending on the mode
             if (mode == "Update")
             {
+                SqliteDataAccess.UpdateStudent(student);
                 MessageBox.Show("Updated");
             }
             else
             {
-                
+                SqliteDataAccess.SaveStudent(student);
                 MessageBox.Show("Added");
             }
 

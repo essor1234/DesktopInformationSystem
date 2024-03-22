@@ -12,10 +12,12 @@ namespace DesktopInformationSystem
 {
     public partial class MainWIndow : Form
     {
-/*        private List<Student> students;
-*/        private List<Teacher> teachers;
-        private List<Admin> admins;
+
         List<Student> students = new List<Student>();
+        List<Teacher> teachers = new List<Teacher>();
+        List<Admin> admins = new List<Admin>();
+
+
 
 
         public MainWIndow()
@@ -125,7 +127,14 @@ namespace DesktopInformationSystem
         }
 
         private void displayAll()
+
         {
+
+            // Get data from database
+            students = SqliteDataAccess.LoadStudent();
+            teachers = SqliteDataAccess.LoadTeacher();
+            admins = SqliteDataAccess.LoadAdmin();
+
             foreach (var student in students)
             {
                 var cellValues = student.GetDisplayText();
@@ -147,8 +156,11 @@ namespace DesktopInformationSystem
 
         private void displayRole(String role)
         {
-            // testing here
+            // Get data from database
             students = SqliteDataAccess.LoadStudent();
+            teachers = SqliteDataAccess.LoadTeacher();
+            admins = SqliteDataAccess.LoadAdmin();
+
 
 
             if (role.Equals("Teacher"))
@@ -189,11 +201,17 @@ namespace DesktopInformationSystem
 
         private void editBtn_Click(object sender, EventArgs e)
         {
+
+           
+
+
             foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
             {
                 // Get the Id and Role of the selected item
                 string role = item.Cells["Role"].Value.ToString();
                 string id = item.Cells["Id"].Value.ToString();
+
+
 
                 // Find the item to update
                 Person personToUpdate = null;
@@ -223,6 +241,6 @@ namespace DesktopInformationSystem
                             form.ShowDialog();
                         }
                         break;
-                }   }   }
+        }   }  }
     }
 }

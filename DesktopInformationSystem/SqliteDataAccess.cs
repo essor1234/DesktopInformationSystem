@@ -17,9 +17,9 @@ namespace DesktopInformationSystem
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<Student>("SELECT User.Id, User.Name, User.Phone, User.Role, User.Email, Student.CurrentSubject1, Student.CurrentSubject2, Student.PreviousSubject1, Student.PreviousSubject2 FROM User " +
-                                        "INNER JOIN Student " +
-                                        "ON User.Id = Student.UserId;", new DynamicParameters());
+                var output = cnn.Query<Student>("SELECT User.*, Student.* FROM User " +
+                                                "INNER JOIN Student " +
+                                                "ON User.Id = Student.Userid;", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -58,7 +58,7 @@ namespace DesktopInformationSystem
                     var parameters = new
                     {
                         Name = student.Name,
-                        Phone = student.Telephone,
+                        Telephone = student.Telephone,
                         Role = student.Role.ToString(),
                         Email = student.Email,
                         CurrentSubject1 = student.CurSubj1,
@@ -67,8 +67,8 @@ namespace DesktopInformationSystem
                         PreviousSubject2 = student.PreSubj2
                     };
 
-                    cnn.Execute("INSERT INTO User (Name, Phone, Role, Email)" +
-                                "VALUES (@Name, @Phone, @Role, @Email);", parameters);
+                    cnn.Execute("INSERT INTO User (Name, Telephone, Role, Email)" +
+                                "VALUES (@Name, @Telephone, @Role, @Email);", parameters);
 
                     cnn.Execute("INSERT INTO `Student` (UserId, CurrentSubject1, CurrentSubject2, PreviousSubject1, PreviousSubject2)" +
                         "VALUES (last_insert_rowid(), @CurrentSubject1, @CurrentSubject2, @PreviousSubject1, @PreviousSubject2);", parameters);
@@ -80,13 +80,63 @@ namespace DesktopInformationSystem
 
     
 
-    public static void SaveTeacher(Teacher teacher)
+        public static void SaveTeacher(Teacher teacher)
         {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
 
+                using (var transaction = cnn.BeginTransaction())
+                {
+                    var parameters = new
+                    {
+                        Name = teacher.Name,
+                        Telephone = teacher.Telephone,
+                        Role = teacher.Role.ToString(),
+                        Email = teacher.Email,
+                        Salary = teacher.Salary,
+                        Subject1 = teacher.Subject1,
+                        Subject2 = teacher.Subject2
+                    };
+
+                    cnn.Execute("INSERT INTO User (Name, Telephone, Role, Email)" +
+                                "VALUES (@Name, @Telephone, @Role, @Email);", parameters);
+
+                    cnn.Execute("INSERT INTO `Teacher` (UserId, Salary, Subject1, Subject2)" +
+                        "VALUES (last_insert_rowid(), @Salary, @Subject1, @Subject2);", parameters);
+
+                    transaction.Commit();
+                }
+            }
         }
         public static void SaveAdmin(Admin admin)
         {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
 
+                using (var transaction = cnn.BeginTransaction())
+                {
+                    var parameters = new
+                    {
+                        Name = admin.Name,
+                        Telephone = admin.Telephone,
+                        Role = admin.Role.ToString(),
+                        Email = admin.Email,
+                        Salary = admin.Salary,
+                        Position = admin.Position,
+                        WorkHour = admin.WorkHours
+                    };
+
+                    cnn.Execute("INSERT INTO User (Name, Telephone, Role, Email)" +
+                                "VALUES (@Name, @Telephone, @Role, @Email);", parameters);
+
+                    cnn.Execute("INSERT INTO `Admin` (UserId, Salary, Position, WorkHour)" +
+                        "VALUES (last_insert_rowid(), @Salary, @Position, @WorkHour);", parameters);
+
+                    transaction.Commit();
+                }
+            }
         }
 
         // Delete methods
@@ -108,15 +158,89 @@ namespace DesktopInformationSystem
         // Update methods
         public static void UpdateStudent(Student student)
         {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
 
+                using (var transaction = cnn.BeginTransaction())
+                {
+                    var parameters = new
+                    {
+                        Id = student.Id, 
+                        Name = student.Name,
+                        Telephone = student.Telephone,
+                        Role = student.Role.ToString(),
+                        Email = student.Email,
+                        CurrentSubject1 = student.CurSubj1,
+                        CurrentSubject2 = student.CurSubj2,
+                        PreviousSubject1 = student.PreSubj1,
+                        PreviousSubject2 = student.PreSubj2
+                    };
+
+                    cnn.Execute("UPDATE User SET Name = @Name, Telephone = @Telephone, Role = @Role, Email = @Email WHERE Id = @Id;", parameters);
+
+                    cnn.Execute("UPDATE Student SET CurrentSubject1 = @CurrentSubject1, CurrentSubject2 = @CurrentSubject2, PreviousSubject1 = @PreviousSubject1, PreviousSubject2 = @PreviousSubject2 WHERE UserId = @Id;", parameters);
+
+                    transaction.Commit();
+                }
+            }
         }
-
         public static void UpdateTeacher(Teacher teacher)
         {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
 
+                using (var transaction = cnn.BeginTransaction())
+                {
+                    var parameters = new
+                    {
+                        Id = teacher.Id,
+                        Name = teacher.Name,
+                        Telephone = teacher.Telephone,
+                        Role = teacher.Role.ToString(),
+                        Email = teacher.Email,
+                        Salary = teacher.Salary,
+                        Subject1 = teacher.Subject1,
+                        Subject2 = teacher.Subject2
+                    };
+
+                    cnn.Execute("UPDATE User SET Name = @Name, Telephone = @Telephone, Role = @Role, Email = @Email WHERE Id = @Id;", parameters);
+
+                    cnn.Execute("UPDATE Teacher SET Salary = @Salary, Subject1 = @Subject1, Subject2 = @Subject2 WHERE Userid = @Id;", parameters);
+
+                    transaction.Commit();
+                }
+            }
         }
 
-        public static void UpdateAdmin( Admin admin) { 
+        public static void UpdateAdmin( Admin admin) 
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
+
+                using (var transaction = cnn.BeginTransaction())
+                {
+                    var parameters = new
+                    {
+                        Id = admin.Id,
+                        Name = admin.Name,
+                        Telephone = admin.Telephone,
+                        Role = admin.Role.ToString(),
+                        Email = admin.Email,
+                        Salary = admin.Salary,
+                        Position = admin.Position,
+                        WorkHour = admin.WorkHours
+                    };
+
+                    cnn.Execute("UPDATE User SET Name = @Name, Telephone = @Telephone, Role = @Role, Email = @Email WHERE Id = @Id;", parameters);
+
+                    cnn.Execute("UPDATE Admin SET Salary = @Salary, Position = @Position, WorkHour = @WorkHour WHERE Userid = @Id;", parameters);
+
+                    transaction.Commit();
+                }
+            }
         }
 
 

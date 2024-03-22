@@ -57,7 +57,7 @@ namespace DesktopInformationSystem
             {
                 // Otherwise, we're adding a new student
                 admin = new Admin();
-                admins.Add(admin);
+                /*admins.Add(admin);*/
             }
 
             // check if namebox consists of letters only
@@ -102,10 +102,12 @@ namespace DesktopInformationSystem
             // Show a message depending on the mode
             if (mode == "Update")
             {
+                SqliteDataAccess.UpdateAdmin(admin);
                 MessageBox.Show("Updated");
             }
             else
             {
+                SqliteDataAccess.SaveAdmin(admin);
                 MessageBox.Show("Added");
             }
         }

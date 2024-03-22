@@ -63,39 +63,39 @@ namespace DesktopInformationSystem
         // Polimorphism
         public virtual string[] GetDisplayText()
         {
-            return new string[] { Id, Name, Telephone, Email, Role.ToString() };
+            return new string[] { Id, Name, Telephone.ToString(), Email, Role.ToString() };
         }
     }
 
     public class Student : Person
     {
-        private string curSubj1;
-        private string curSubj2;
-        private string preSubj1;
-        private string preSubj2;
+        private string CurrentSubject1;
+        private string CurrentSubject2;
+        private string PreviousSubject1;
+        private string PreviousSubject2;
 
         public string CurSubj1
         {
-            get { return curSubj1; }
-            set { curSubj1 = value; }
+            get { return CurrentSubject1; }
+            set { CurrentSubject1 = value; }
         }
 
         public string CurSubj2
         {
-            get { return curSubj2; }
-            set { curSubj2 = value; }
+            get { return CurrentSubject2; }
+            set { CurrentSubject2 = value; }
         }
 
         public string PreSubj1
         {
-            get { return preSubj1; }
-            set { preSubj1 = value; }
+            get { return PreviousSubject1; }
+            set { PreviousSubject1 = value; }
         }
 
         public string PreSubj2
         {
-            get { return preSubj2; }
-            set { preSubj2 = value; }
+            get { return PreviousSubject2; }
+            set { PreviousSubject2 = value; }
         }
 
         // polymorphism
@@ -111,7 +111,7 @@ namespace DesktopInformationSystem
     {
         private int salary;
         private string position;
-        private int workHours;
+        private int workHour;
 
         public int Salary
         {
@@ -127,8 +127,8 @@ namespace DesktopInformationSystem
 
         public int WorkHours
         {
-            get { return workHours; }
-            set { workHours = value; }
+            get { return workHour; }
+            set { workHour = value; }
         }
 
         public override string[] GetDisplayText()

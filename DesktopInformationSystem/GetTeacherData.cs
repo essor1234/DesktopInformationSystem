@@ -35,7 +35,9 @@ namespace DesktopInformationSystem
                 emailBox.Text = teacher.Email;
                 comboBox1.Text = teacher.Subject1;
                 comboBox2.Text = teacher.Subject2;
-                
+                salaryNum.Text = teacher.Salary.ToString();
+
+
 
 
             }
@@ -59,7 +61,7 @@ namespace DesktopInformationSystem
             {
                 // Otherwise, we're adding a new student
                 teacher = new Teacher();
-                teachers.Add(teacher);
+                /*teachers.Add(teacher);*/
             }
 
 
@@ -94,10 +96,12 @@ namespace DesktopInformationSystem
             // Show a message depending on the mode
             if (mode == "Update")
             {
+                SqliteDataAccess.UpdateTeacher(teacher);
                 MessageBox.Show("Updated");
             }
             else
             {
+                SqliteDataAccess.SaveTeacher(teacher);
                 MessageBox.Show("Added");
             }
         }
