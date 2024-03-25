@@ -47,12 +47,40 @@ namespace DesktopInformationSystem
                 // Get the Id of the selected item
                 string id = item.Cells["Id"].Value.ToString();
 
-                // Remove from the corresponding list
-                if (students.RemoveAll(s => s.Id == id) == 0)
+                // Find the student with this Id
+                Student student = students.Find(s => s.Id == id);
+                if (student != null)
                 {
-                    if (teachers.RemoveAll(t => t.Id == id) == 0)
+                    // Call the DeleteStudent function
+                    SqliteDataAccess.DeleteStudent(student);
+
+                    // Remove from the corresponding list
+                    students.Remove(student);
+                }
+                else
+                {
+                    // If not found in students, check in teachers
+                    Teacher teacher = teachers.Find(t => t.Id == id);
+                    if (teacher != null)
                     {
-                        admins.RemoveAll(a => a.Id == id);
+                        // Call the DeleteTeacher function (you need to implement this)
+                        SqliteDataAccess.DeleteTeacher(teacher);
+
+                        // Remove from the corresponding list
+                        teachers.Remove(teacher);
+                    }
+                    else
+                    {
+                        // If not found in teachers, check in admins
+                        Admin admin = admins.Find(a => a.Id == id);
+                        if (admin != null)
+                        {
+                            // Call the DeleteAdmin function (you need to implement this)
+                            SqliteDataAccess.DeleteAdmin(admin);
+
+                            // Remove from the corresponding list
+                            admins.Remove(admin);
+                        }
                     }
                 }
 
@@ -60,6 +88,7 @@ namespace DesktopInformationSystem
                 dataGridView1.Rows.RemoveAt(item.Index);
             }
         }
+
 
         private void toolStripDropDownButton3_Click(object sender, EventArgs e)
         {
@@ -201,9 +230,6 @@ namespace DesktopInformationSystem
 
         private void editBtn_Click(object sender, EventArgs e)
         {
-
-           
-
 
             foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
             {

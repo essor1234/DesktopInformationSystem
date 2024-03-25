@@ -17,9 +17,9 @@ namespace DesktopInformationSystem
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<Student>("SELECT User.*, Student.* FROM User " +
+                var output = cnn.Query<Student>("SELECT Person.*, Student.* FROM Person " +
                                                 "INNER JOIN Student " +
-                                                "ON User.Id = Student.Userid;", new DynamicParameters());
+                                                "ON Person.Id = Student.Userid;", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -28,9 +28,9 @@ namespace DesktopInformationSystem
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<Teacher>("SELECT User.*, Teacher.* FROM User " +
+                var output = cnn.Query<Teacher>("SELECT Person.*, Teacher.* FROM Person " +
                                                 "INNER JOIN Teacher " +
-                                                "ON User.Id = Teacher.Userid;", new DynamicParameters());
+                                                "ON Person.Id = Teacher.Userid;", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -39,9 +39,9 @@ namespace DesktopInformationSystem
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<Admin>("SELECT User.*, Admin.* FROM User " +
+                var output = cnn.Query<Admin>("SELECT Person.*, Admin.* FROM Person " +
                                                 "INNER JOIN Admin " +
-                                                "ON User.Id = Admin.Userid;", new DynamicParameters());
+                                                "ON Person.Id = Admin.Userid;", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -67,7 +67,7 @@ namespace DesktopInformationSystem
                         PreviousSubject2 = student.PreSubj2
                     };
 
-                    cnn.Execute("INSERT INTO User (Name, Telephone, Role, Email)" +
+                    cnn.Execute("INSERT INTO Person (Name, Telephone, Role, Email)" +
                                 "VALUES (@Name, @Telephone, @Role, @Email);", parameters);
 
                     cnn.Execute("INSERT INTO `Student` (UserId, CurrentSubject1, CurrentSubject2, PreviousSubject1, PreviousSubject2)" +
@@ -99,7 +99,7 @@ namespace DesktopInformationSystem
                         Subject2 = teacher.Subject2
                     };
 
-                    cnn.Execute("INSERT INTO User (Name, Telephone, Role, Email)" +
+                    cnn.Execute("INSERT INTO Person (Name, Telephone, Role, Email)" +
                                 "VALUES (@Name, @Telephone, @Role, @Email);", parameters);
 
                     cnn.Execute("INSERT INTO `Teacher` (UserId, Salary, Subject1, Subject2)" +
@@ -128,7 +128,7 @@ namespace DesktopInformationSystem
                         WorkHour = admin.WorkHours
                     };
 
-                    cnn.Execute("INSERT INTO User (Name, Telephone, Role, Email)" +
+                    cnn.Execute("INSERT INTO Person (Name, Telephone, Role, Email)" +
                                 "VALUES (@Name, @Telephone, @Role, @Email);", parameters);
 
                     cnn.Execute("INSERT INTO `Admin` (UserId, Salary, Position, WorkHour)" +
@@ -142,17 +142,88 @@ namespace DesktopInformationSystem
         // Delete methods
         public static void DeleteStudent(Student student)
         {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
 
+                using (var transaction = cnn.BeginTransaction())
+                {
+                    var parameters = new
+                    {
+                        Id = student.Id,
+                        Name = student.Name,
+                        Telephone = student.Telephone,
+                        Role = student.Role.ToString(),
+                        Email = student.Email,
+                        CurrentSubject1 = student.CurSubj1,
+                        CurrentSubject2 = student.CurSubj2,
+                        PreviousSubject1 = student.PreSubj1,
+                        PreviousSubject2 = student.PreSubj2
+                    };
+
+                    cnn.Execute("DELETE FROM `Student` WHERE UserId = @Id;", parameters);
+                    cnn.Execute("DELETE FROM Person WHERE Id = @Id;", parameters);
+
+                    transaction.Commit();
+                }
+            }
         }
 
-        public static void DeleteTeacher(Student teacher)
+        public static void DeleteTeacher(Teacher teacher)
         {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
+
+                using (var transaction = cnn.BeginTransaction())
+                {
+                    var parameters = new
+                    {
+                        Id = teacher.Id,
+                        Name = teacher.Name,
+                        Telephone = teacher.Telephone,
+                        Role = teacher.Role.ToString(),
+                        Email = teacher.Email,
+                        Salary = teacher.Salary,
+                        Subject1 = teacher.Subject1,
+                        Subject2 = teacher.Subject2
+                    };
+
+                    cnn.Execute("DELETE FROM `Teacher` WHERE UserId = @Id;", parameters);
+                    cnn.Execute("DELETE FROM `Person` WHERE Id = @Id;", parameters);
+
+                    transaction.Commit();
+                }
+            }
 
         }
 
         public static void DeleteAdmin(Admin admin)
         {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Open();
 
+                using (var transaction = cnn.BeginTransaction())
+                {
+                    var parameters = new
+                    {
+                        Id = admin.Id,
+                        Name = admin.Name,
+                        Telephone = admin.Telephone,
+                        Role = admin.Role.ToString(),
+                        Email = admin.Email,
+                        Salary = admin.Salary,
+                        Position = admin.Position,
+                        WorkHour = admin.WorkHours
+                    };
+
+                    cnn.Execute("DELETE FROM `Admin` WHERE UserId = @Id;", parameters);
+                    cnn.Execute("DELETE FROM `Person` WHERE Id = @Id;", parameters);
+
+                    transaction.Commit();
+                }
+            }
         }
 
         // Update methods
@@ -177,7 +248,7 @@ namespace DesktopInformationSystem
                         PreviousSubject2 = student.PreSubj2
                     };
 
-                    cnn.Execute("UPDATE User SET Name = @Name, Telephone = @Telephone, Role = @Role, Email = @Email WHERE Id = @Id;", parameters);
+                    cnn.Execute("UPDATE Person SET Name = @Name, Telephone = @Telephone, Role = @Role, Email = @Email WHERE Id = @Id;", parameters);
 
                     cnn.Execute("UPDATE Student SET CurrentSubject1 = @CurrentSubject1, CurrentSubject2 = @CurrentSubject2, PreviousSubject1 = @PreviousSubject1, PreviousSubject2 = @PreviousSubject2 WHERE UserId = @Id;", parameters);
 
@@ -205,7 +276,7 @@ namespace DesktopInformationSystem
                         Subject2 = teacher.Subject2
                     };
 
-                    cnn.Execute("UPDATE User SET Name = @Name, Telephone = @Telephone, Role = @Role, Email = @Email WHERE Id = @Id;", parameters);
+                    cnn.Execute("UPDATE Person SET Name = @Name, Telephone = @Telephone, Role = @Role, Email = @Email WHERE Id = @Id;", parameters);
 
                     cnn.Execute("UPDATE Teacher SET Salary = @Salary, Subject1 = @Subject1, Subject2 = @Subject2 WHERE Userid = @Id;", parameters);
 
@@ -234,7 +305,7 @@ namespace DesktopInformationSystem
                         WorkHour = admin.WorkHours
                     };
 
-                    cnn.Execute("UPDATE User SET Name = @Name, Telephone = @Telephone, Role = @Role, Email = @Email WHERE Id = @Id;", parameters);
+                    cnn.Execute("UPDATE Person SET Name = @Name, Telephone = @Telephone, Role = @Role, Email = @Email WHERE Id = @Id;", parameters);
 
                     cnn.Execute("UPDATE Admin SET Salary = @Salary, Position = @Position, WorkHour = @WorkHour WHERE Userid = @Id;", parameters);
 
