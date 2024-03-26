@@ -26,6 +26,7 @@ namespace DesktopInformationSystem
             this.mode = mode;
             this.currentStudent = student;
 
+
             if (mode == "Update" && student != null)
             {
                 // Fill the form with the current student's data
@@ -39,6 +40,39 @@ namespace DesktopInformationSystem
                 comboBox2.Text = student.CurSubj2;
 
                 
+            }
+
+
+            if (mode == "More")
+            {
+                nameBox.Enabled = false;
+                teleBox.Enabled = false;
+                emailBox.Enabled = false;
+                comboBox4.Enabled = false;
+                comboBox3.Enabled = false;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                confirmBtn.Visible= false;
+
+                nameBox.Text = student.Name;
+                teleBox.Text = student.Telephone;
+                emailBox.Text = student.Email;
+                comboBox4.Text = student.PreSubj1;
+                comboBox3.Text = student.PreSubj2;
+                comboBox1.Text = student.CurSubj1;
+                comboBox2.Text = student.CurSubj2;
+            }
+            else
+            {
+                nameBox.Enabled = true;
+                teleBox.Enabled = true;
+                emailBox.Enabled = true;
+                comboBox4.Enabled = true;
+                comboBox3.Enabled = true;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                confirmBtn.Visible = true;
+
             }
         }
 
@@ -104,9 +138,8 @@ namespace DesktopInformationSystem
                 /*students.Add(student);*/
             }
 
-
             // check if namebox consists of letters only
-            if (System.Text.RegularExpressions.Regex.IsMatch(nameBox.Text, @"^[a-zA-Z]+$"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(nameBox.Text, @"^[a-zA-Z ]+$"))
             {
                 student.Name = nameBox.Text;
             }
@@ -114,28 +147,57 @@ namespace DesktopInformationSystem
             {
                 // Handle the case where the name contains non-letter characters
                 MessageBox.Show("Name should consist of letters only.");
-
+                return;
             }
-
 
             // Get the role student
             student.Role = Role.Student;
 
             // Get the phone
-            student.Telephone = teleBox.Text;
+            if (!string.IsNullOrEmpty(teleBox.Text))
+            {
+                student.Telephone = teleBox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a telephone number.");
+                return;
+            }
 
             // Get the email
-            student.Email = emailBox.Text;
+            if (!string.IsNullOrEmpty(emailBox.Text))
+            {
+                student.Email = emailBox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please enter an email.");
+                return;
+            }
 
             // Get the previous subject
-            student.PreSubj1 = comboBox1.Text;
-            student.PreSubj2 = comboBox2.Text;
+            if (!string.IsNullOrEmpty(comboBox1.Text) && !string.IsNullOrEmpty(comboBox2.Text))
+            {
+                student.PreSubj1 = comboBox1.Text;
+                student.PreSubj2 = comboBox2.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please select the previous subjects.");
+                return;
+            }
 
             // Get the current subject
-            student.CurSubj1 = comboBox3.Text;
-            student.CurSubj2 = comboBox4.Text;
-
-
+            if (!string.IsNullOrEmpty(comboBox3.Text) && !string.IsNullOrEmpty(comboBox4.Text))
+            {
+                student.CurSubj1 = comboBox3.Text;
+                student.CurSubj2 = comboBox4.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please select the current subjects.");
+                return;
+            }
 
             // Show a message depending on the mode
             if (mode == "Update")
@@ -148,9 +210,8 @@ namespace DesktopInformationSystem
                 SqliteDataAccess.SaveStudent(student);
                 MessageBox.Show("Added");
             }
-
-
         }
+
 
         private void GetStudentData_Load(object sender, EventArgs e)
         {

@@ -36,7 +36,34 @@ namespace DesktopInformationSystem
                 salaryNum.Text = Convert.ToString(admin.Salary);
                 workBox.Text = Convert.ToString(admin.WorkHours);
 
+            }
 
+            if (mode == "More")
+            {
+                nameBox.Enabled = false;
+                teleBox.Enabled = false;
+                emailBox.Enabled = false;
+                positionCombo.Enabled = false;
+                salaryNum.Enabled = false;
+                workBox.Enabled = false;
+                confirmBtn.Visible = false;
+
+                nameBox.Text = admin.Name;
+                teleBox.Text = admin.Telephone;
+                emailBox.Text = admin.Email;
+                positionCombo.Text = admin.Position;
+                salaryNum.Text = Convert.ToString(admin.Salary);
+                workBox.Text = Convert.ToString(admin.WorkHours);
+            }
+            else
+            {
+                nameBox.Enabled = true;
+                teleBox.Enabled = true;
+                emailBox.Enabled = true;
+                positionCombo.Enabled = true;
+                salaryNum.Enabled = true;
+                workBox.Enabled = true;
+                confirmBtn.Visible = true;
             }
 
 
@@ -61,7 +88,7 @@ namespace DesktopInformationSystem
             }
 
             // check if namebox consists of letters only
-            if (System.Text.RegularExpressions.Regex.IsMatch(nameBox.Text, @"^[a-zA-Z]+$"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(nameBox.Text, @"^[a-zA-Z ]+$"))
             {
                 admin.Name = nameBox.Text;
             }
@@ -69,34 +96,58 @@ namespace DesktopInformationSystem
             {
                 // Handle the case where the name contains non-letter characters
                 MessageBox.Show("Name should consist of letters only.");
-
+                return;
             }
 
             // Get the role student
             admin.Role = Role.Administration;
 
             // Get the phone
-            admin.Telephone = teleBox.Text;
+            if (!string.IsNullOrEmpty(teleBox.Text))
+            {
+                admin.Telephone = teleBox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a telephone number.");
+                return;
+            }
 
             // Get the email
-            admin.Email = emailBox.Text;
+            if (!string.IsNullOrEmpty(emailBox.Text))
+            {
+                admin.Email = emailBox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please enter an email.");
+                return;
+            }
 
             // Get the salary
             admin.Salary = (int)salaryNum.Value;
 
             // Get the position
-            admin.Position = positionCombo.Text;
+            if (!string.IsNullOrEmpty(positionCombo.Text))
+            {
+                admin.Position = positionCombo.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please select a position.");
+                return;
+            }
 
             // Get working hours
             int workHours;
-            if (int.TryParse(workBox.Text, out workHours))
+            if (int.TryParse(workBox.Text, out workHours) && workHours >= 0)
             {
                 admin.WorkHours = workHours;
             }
             else
             {
                 MessageBox.Show("Hours should contain natural number only");
-
+                return;
             }
 
             // Show a message depending on the mode
@@ -111,5 +162,6 @@ namespace DesktopInformationSystem
                 MessageBox.Show("Added");
             }
         }
+
     }
 }

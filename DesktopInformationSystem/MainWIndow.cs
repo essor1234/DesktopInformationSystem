@@ -45,7 +45,19 @@ namespace DesktopInformationSystem
             foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
             {
                 // Get the Id of the selected item
-                string id = item.Cells["Id"].Value.ToString();
+
+                string id = "null";
+
+                // Check if the cells are not null before trying to access their values
+                if (item.Cells["Role"].Value != null && item.Cells["Id"].Value != null)
+                {
+                    id = item.Cells["Id"].Value.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Please choose a person to delete");
+                }
+
 
                 // Find the student with this Id
                 Student student = students.Find(s => s.Id == id);
@@ -83,9 +95,13 @@ namespace DesktopInformationSystem
                         }
                     }
                 }
+                if (item.Cells["Role"].Value != null && item.Cells["Id"].Value != null)
+                {
+                    // Remove from the grid view
+                    dataGridView1.Rows.RemoveAt(item.Index);
+                }
 
-                // Remove from the grid view
-                dataGridView1.Rows.RemoveAt(item.Index);
+                    
             }
         }
 
@@ -164,6 +180,11 @@ namespace DesktopInformationSystem
             teachers = SqliteDataAccess.LoadTeacher();
             admins = SqliteDataAccess.LoadAdmin();
 
+            
+
+            RemoveAdditionalColumns();
+
+
             foreach (var student in students)
             {
                 var cellValues = student.GetDisplayText();
@@ -183,7 +204,7 @@ namespace DesktopInformationSystem
             }
         }
 
-        private void displayRole(String role)
+        /*private void displayRole(String role)
         {
             // Get data from database
             students = SqliteDataAccess.LoadStudent();
@@ -221,6 +242,86 @@ namespace DesktopInformationSystem
             {
                 MessageBox.Show("Please choose a appropriate Role");
             }
+        }*/
+
+        private void displayRole(String role)
+        {
+            // Get data from database
+            students = SqliteDataAccess.LoadStudent();
+            teachers = SqliteDataAccess.LoadTeacher();
+            admins = SqliteDataAccess.LoadAdmin();
+
+            dataGridView1.Rows.Clear(); // Clear existing rows
+            dataGridView1.Columns.Clear(); // Clear existing columns
+
+            // Add columns for the base properties
+            dataGridView1.Columns.Add("Id", "Id");
+            dataGridView1.Columns.Add("Name", "Name");
+            dataGridView1.Columns.Add("Telephone", "Telephone");
+            dataGridView1.Columns.Add("Email", "Email");
+            dataGridView1.Columns.Add("Role", "Role");
+
+            if (role.Equals("Teacher"))
+            {
+                // Remove any existing additional columns
+                RemoveAdditionalColumns();
+
+                // Add additional columns for Teacher properties
+                dataGridView1.Columns.Add("Salary", "Salary");
+                dataGridView1.Columns.Add("Subject1", "Subject1");
+                dataGridView1.Columns.Add("Subject2", "Subject2");
+
+                foreach (var teacher in teachers)
+                {
+                    dataGridView1.Rows.Add(teacher.GetDisplayText().Concat(new string[] { teacher.Salary.ToString(), teacher.Subject1, teacher.Subject2 }).ToArray());
+                }
+            }
+            else if (role.Equals("Student"))
+            {
+                // Remove any existing additional columns
+                RemoveAdditionalColumns();
+
+                // Add additional columns for Student properties
+                dataGridView1.Columns.Add("CurSubj1", "CurSubj1");
+                dataGridView1.Columns.Add("CurSubj2", "CurSubj2");
+                dataGridView1.Columns.Add("PreSubj1", "PreSubj1");
+                dataGridView1.Columns.Add("PreSubj2", "PreSubj2");
+
+                foreach (var student in students)
+                {
+                    dataGridView1.Rows.Add(student.GetDisplayText().Concat(new string[] { student.CurSubj1, student.CurSubj2, student.PreSubj1, student.PreSubj2 }).ToArray());
+                }
+            }
+            else if (role.Equals("Admin"))
+            {
+                // Remove any existing additional columns
+                RemoveAdditionalColumns();
+
+                // Add additional columns for Admin properties
+                dataGridView1.Columns.Add("Salary", "Salary");
+                dataGridView1.Columns.Add("Position", "Position");
+                dataGridView1.Columns.Add("WorkHours", "WorkHours");
+
+                foreach (var admin in admins)
+                {
+                    dataGridView1.Rows.Add(admin.GetDisplayText().Concat(new string[] { admin.Salary.ToString(), admin.Position, admin.WorkHours.ToString() }).ToArray());
+                }
+            
+            
+            }
+            else
+            {
+                MessageBox.Show("Please choose an appropriate Role");
+            }
+        }
+
+        private void RemoveAdditionalColumns()
+        {
+            // Remove any existing additional columns
+            while (dataGridView1.Columns.Count > 5)
+            {
+                dataGridView1.Columns.RemoveAt(5);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -233,9 +334,20 @@ namespace DesktopInformationSystem
 
             foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
             {
-                // Get the Id and Role of the selected item
-                string role = item.Cells["Role"].Value.ToString();
-                string id = item.Cells["Id"].Value.ToString();
+                string role = "null";
+                string id = "null";
+
+                // Check if the cells are not null before trying to access their values
+                if (item.Cells["Role"].Value != null && item.Cells["Id"].Value != null)
+                {
+                    role = item.Cells["Role"].Value.ToString();
+                    id = item.Cells["Id"].Value.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Please choose a person to edit");
+                }
+
 
 
 
@@ -268,5 +380,60 @@ namespace DesktopInformationSystem
                         }
                         break;
         }   }  }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
+            {
+                string role = "null";
+                string id = "null";
+
+                // Check if the cells are not null before trying to access their values
+                if (item.Cells["Role"].Value != null && item.Cells["Id"].Value != null)
+                {
+                    role = item.Cells["Role"].Value.ToString();
+                    id = item.Cells["Id"].Value.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Please choose a person to show");
+                }
+
+
+
+
+
+                // Find the item to update
+                Person personToUpdate = null;
+                switch (role)
+                {
+                    case "Student":
+                        personToUpdate = students.FirstOrDefault(s => s.Id == id);
+                        if (personToUpdate != null)
+                        {
+                            GetStudentData form = new GetStudentData("More", (Student)personToUpdate);
+                            form.ShowDialog();
+                        }
+                        break;
+                    case "Teacher":
+                        personToUpdate = teachers.FirstOrDefault(t => t.Id == id);
+                        if (personToUpdate != null)
+                        {
+                            GetTeacherData form = new GetTeacherData("More", (Teacher)personToUpdate);
+                            form.ShowDialog();
+                        }
+                        break;
+                    case "Administration":
+                        personToUpdate = admins.FirstOrDefault(a => a.Id == id);
+                        if (personToUpdate != null)
+                        {
+                            GetAdminData form = new GetAdminData("More", (Admin)personToUpdate);
+                            form.ShowDialog();
+                        }
+                        break;
+                }
+            }
+        
+    }
     }
 }

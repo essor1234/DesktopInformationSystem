@@ -65,6 +65,8 @@ namespace DesktopInformationSystem
         {
             return new string[] { Id, Name, Telephone.ToString(), Email, Role.ToString() };
         }
+
+
     }
 
     public class Student : Person
@@ -99,12 +101,18 @@ namespace DesktopInformationSystem
         }
 
         // polymorphism
-        public override string[] GetDisplayText()
+        /*public override string[] GetDisplayText()
         {
             return base.GetDisplayText();
+        }*/
+        public override string[] GetDisplayText()
+        {
+            string[] baseDisplayText = base.GetDisplayText();
+            return baseDisplayText.Concat(new string[] { CurSubj1, CurSubj2, PreSubj1, PreSubj2 }).ToArray();
         }
 
-        
+
+
     }
 
     public class Admin : Person
@@ -131,9 +139,15 @@ namespace DesktopInformationSystem
             set { workHour = value; }
         }
 
-        public override string[] GetDisplayText()
+        /*public override string[] GetDisplayText()
         {
             return base.GetDisplayText();
+        }*/
+
+        public override string[] GetDisplayText()
+        {
+            string[] baseDisplayText = base.GetDisplayText();
+            return baseDisplayText.Concat(new string[] { Salary.ToString(), Position, WorkHours.ToString() }).ToArray();
         }
     }
 
@@ -161,9 +175,15 @@ namespace DesktopInformationSystem
             set { subject2 = value; }
         }
 
-        public override string[] GetDisplayText()
+        /*public override string[] GetDisplayText()
         {
             return base.GetDisplayText();
+        }*/
+
+        public override string[] GetDisplayText()
+        {
+            string[] baseDisplayText = base.GetDisplayText();
+            return baseDisplayText.Concat(new string[] { Salary.ToString(), Subject1, Subject2 }).ToArray();
         }
     }
 

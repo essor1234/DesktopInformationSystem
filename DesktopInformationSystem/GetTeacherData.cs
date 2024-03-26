@@ -37,11 +37,40 @@ namespace DesktopInformationSystem
                 comboBox2.Text = teacher.Subject2;
                 salaryNum.Text = teacher.Salary.ToString();
 
+            }
+
+            if (mode == "More")
+            {
+                nameBox.Enabled = false;
+                teleBox.Enabled = false;
+                emailBox.Enabled = false;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                salaryNum.Enabled = false;
+                confirmBtn.Visible = false;
 
 
-
+                nameBox.Text = teacher.Name;
+                teleBox.Text = teacher.Telephone;
+                emailBox.Text = teacher.Email;
+                comboBox1.Text = teacher.Subject1;
+                comboBox2.Text = teacher.Subject2;
+                salaryNum.Text = teacher.Salary.ToString();
+            }
+            else
+            {
+                nameBox.Enabled = true;
+                teleBox.Enabled = true;
+                emailBox.Enabled = true;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                salaryNum.Enabled = true;
+                confirmBtn.Visible = true;
+                confirmBtn.Visible = true;
             }
         }
+
+
 
         private void GetTeacherData_Load(object sender, EventArgs e)
         {
@@ -51,22 +80,21 @@ namespace DesktopInformationSystem
         private void confirmBtn_Click(object sender, EventArgs e)
         {
             Teacher teacher = null;
+
             // Choosing mode for update or adding
             if (mode == "Update" && currentTeacher != null)
             {
-                // If we're updating, we want to modify the existing student
+                // If we're updating, we want to modify the existing teacher
                 teacher = currentTeacher;
             }
             else
             {
-                // Otherwise, we're adding a new student
+                // Otherwise, we're adding a new teacher
                 teacher = new Teacher();
-                /*teachers.Add(teacher);*/
             }
 
-
             // check if namebox consists of letters only
-            if (System.Text.RegularExpressions.Regex.IsMatch(nameBox.Text, @"^[a-zA-Z]+$"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(nameBox.Text, @"^[a-zA-Z ]+$"))
             {
                 teacher.Name = nameBox.Text;
             }
@@ -74,24 +102,48 @@ namespace DesktopInformationSystem
             {
                 // Handle the case where the name contains non-letter characters
                 MessageBox.Show("Name should consist of letters only.");
-
+                return;
             }
 
-            // Get the role student
+            // Get the role teacher
             teacher.Role = Role.Teacher;
 
             // Get the phone
-            teacher.Telephone = teleBox.Text;
+            if (!string.IsNullOrEmpty(teleBox.Text))
+            {
+                teacher.Telephone = teleBox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a telephone number.");
+                return;
+            }
 
             // Get the email
-            teacher.Email = emailBox.Text;
+            if (!string.IsNullOrEmpty(emailBox.Text))
+            {
+                teacher.Email = emailBox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please enter an email.");
+                return;
+            }
 
             // Get the salary
             teacher.Salary = (int)salaryNum.Value;
 
-            // Get the previous subject
-            teacher.Subject1 = comboBox1.Text;
-            teacher.Subject2 = comboBox2.Text;
+            // Get the subjects
+            if (!string.IsNullOrEmpty(comboBox1.Text) && !string.IsNullOrEmpty(comboBox2.Text))
+            {
+                teacher.Subject1 = comboBox1.Text;
+                teacher.Subject2 = comboBox2.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please select the subjects.");
+                return;
+            }
 
             // Show a message depending on the mode
             if (mode == "Update")
@@ -105,6 +157,7 @@ namespace DesktopInformationSystem
                 MessageBox.Show("Added");
             }
         }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
