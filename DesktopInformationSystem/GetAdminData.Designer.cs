@@ -48,7 +48,7 @@
             // 
             this.confirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmBtn.Location = new System.Drawing.Point(235, 478);
-            this.confirmBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.confirmBtn.Margin = new System.Windows.Forms.Padding(4);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(335, 55);
             this.confirmBtn.TabIndex = 13;
@@ -60,7 +60,7 @@
             // 
             this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailBox.Location = new System.Drawing.Point(160, 219);
-            this.emailBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.emailBox.Margin = new System.Windows.Forms.Padding(4);
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(245, 36);
             this.emailBox.TabIndex = 19;
@@ -79,7 +79,7 @@
             // 
             this.teleBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teleBox.Location = new System.Drawing.Point(219, 135);
-            this.teleBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teleBox.Margin = new System.Windows.Forms.Padding(4);
             this.teleBox.Name = "teleBox";
             this.teleBox.Size = new System.Drawing.Size(205, 36);
             this.teleBox.TabIndex = 17;
@@ -98,7 +98,7 @@
             // 
             this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameBox.Location = new System.Drawing.Point(160, 47);
-            this.nameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nameBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(245, 36);
             this.nameBox.TabIndex = 15;
@@ -174,6 +174,7 @@
             // 
             // positionCombo
             // 
+            this.positionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.positionCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.positionCombo.FormattingEnabled = true;
             this.positionCombo.Items.AddRange(new object[] {
@@ -189,7 +190,7 @@
             // 
             this.workBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.workBox.Location = new System.Drawing.Point(289, 382);
-            this.workBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.workBox.Margin = new System.Windows.Forms.Padding(4);
             this.workBox.Name = "workBox";
             this.workBox.Size = new System.Drawing.Size(205, 36);
             this.workBox.TabIndex = 25;

@@ -22,15 +22,18 @@ namespace DesktopInformationSystem
         private string telephone = string.Empty;
         private string email = string.Empty;
         private Role role;
+        // for auto increase Id
         private static int nextId = 1; 
 
-        public string Id // Modify this property
+        public string Id 
         {
             get { return id; }
-            private set { id = value; } // Make the setter private
+            private set { id = value; } 
         }
 
-        public Person() // Add this constructor
+        // method to increase id
+
+        public Person() 
         {
             Id = nextId.ToString();
             nextId++;
@@ -101,13 +104,13 @@ namespace DesktopInformationSystem
         }
 
         // polymorphism
-        /*public override string[] GetDisplayText()
-        {
-            return base.GetDisplayText();
-        }*/
+        
         public override string[] GetDisplayText()
         {
+            // getting based data from the parent class
+
             string[] baseDisplayText = base.GetDisplayText();
+            // Return with more data for each specific child class
             return baseDisplayText.Concat(new string[] { CurSubj1, CurSubj2, PreSubj1, PreSubj2 }).ToArray();
         }
 
@@ -139,14 +142,15 @@ namespace DesktopInformationSystem
             set { workHour = value; }
         }
 
-        /*public override string[] GetDisplayText()
-        {
-            return base.GetDisplayText();
-        }*/
+        
 
         public override string[] GetDisplayText()
         {
+            // getting based data from the parent class
+
             string[] baseDisplayText = base.GetDisplayText();
+            // Return with more data for each specific child class
+
             return baseDisplayText.Concat(new string[] { Salary.ToString(), Position, WorkHours.ToString() }).ToArray();
         }
     }
@@ -175,14 +179,13 @@ namespace DesktopInformationSystem
             set { subject2 = value; }
         }
 
-        /*public override string[] GetDisplayText()
-        {
-            return base.GetDisplayText();
-        }*/
-
+       
         public override string[] GetDisplayText()
         {
+            // getting based data from the parent class
             string[] baseDisplayText = base.GetDisplayText();
+            // Return with more data for each specific child class
+
             return baseDisplayText.Concat(new string[] { Salary.ToString(), Subject1, Subject2 }).ToArray();
         }
     }

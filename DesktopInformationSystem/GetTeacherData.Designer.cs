@@ -47,7 +47,7 @@
             // 
             this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailBox.Location = new System.Drawing.Point(169, 206);
-            this.emailBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.emailBox.Margin = new System.Windows.Forms.Padding(4);
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(245, 36);
             this.emailBox.TabIndex = 11;
@@ -67,7 +67,7 @@
             // 
             this.teleBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.teleBox.Location = new System.Drawing.Point(227, 122);
-            this.teleBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teleBox.Margin = new System.Windows.Forms.Padding(4);
             this.teleBox.Name = "teleBox";
             this.teleBox.Size = new System.Drawing.Size(245, 36);
             this.teleBox.TabIndex = 9;
@@ -86,7 +86,7 @@
             // 
             this.nameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameBox.Location = new System.Drawing.Point(169, 34);
-            this.nameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nameBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(245, 36);
             this.nameBox.TabIndex = 7;
@@ -103,6 +103,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "MATH",
@@ -111,13 +112,14 @@
             "CHEMISTRY",
             "GEOMETRIC"});
             this.comboBox2.Location = new System.Drawing.Point(600, 303);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(160, 24);
             this.comboBox2.TabIndex = 14;
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "MATH",
@@ -126,7 +128,7 @@
             "CHEMISTRY",
             "GEOMETRIC"});
             this.comboBox1.Location = new System.Drawing.Point(389, 303);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(160, 24);
             this.comboBox1.TabIndex = 13;
@@ -145,7 +147,7 @@
             // 
             this.confirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmBtn.Location = new System.Drawing.Point(213, 367);
-            this.confirmBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.confirmBtn.Margin = new System.Windows.Forms.Padding(4);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(335, 55);
             this.confirmBtn.TabIndex = 15;

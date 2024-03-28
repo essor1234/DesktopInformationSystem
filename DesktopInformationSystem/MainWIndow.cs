@@ -134,7 +134,7 @@ namespace DesktopInformationSystem
             dataGridView1.Rows.Clear();
 
             string displayOption = displayBox.Text;
-
+            // Check mode to access
             if (displayOption.Equals("ALL"))
             {
                 displayAll();
@@ -273,6 +273,7 @@ namespace DesktopInformationSystem
 
                 foreach (var teacher in teachers)
                 {
+                    // Add data into grid veiw columns
                     dataGridView1.Rows.Add(teacher.GetDisplayText().Concat(new string[] { teacher.Salary.ToString(), teacher.Subject1, teacher.Subject2 }).ToArray());
                 }
             }
@@ -289,6 +290,7 @@ namespace DesktopInformationSystem
 
                 foreach (var student in students)
                 {
+                    // Add data into grid veiw columns
                     dataGridView1.Rows.Add(student.GetDisplayText().Concat(new string[] { student.CurSubj1, student.CurSubj2, student.PreSubj1, student.PreSubj2 }).ToArray());
                 }
             }
@@ -304,6 +306,7 @@ namespace DesktopInformationSystem
 
                 foreach (var admin in admins)
                 {
+                    // Add data into grid veiw columns
                     dataGridView1.Rows.Add(admin.GetDisplayText().Concat(new string[] { admin.Salary.ToString(), admin.Position, admin.WorkHours.ToString() }).ToArray());
                 }
             
@@ -359,6 +362,7 @@ namespace DesktopInformationSystem
                         personToUpdate = students.FirstOrDefault(s => s.Id == id);
                         if (personToUpdate != null)
                         {
+                            // Call update method
                             GetStudentData form = new GetStudentData("Update", (Student)personToUpdate);
                             form.ShowDialog();
                         }
@@ -367,6 +371,8 @@ namespace DesktopInformationSystem
                         personToUpdate = teachers.FirstOrDefault(t => t.Id == id);
                         if (personToUpdate != null)
                         {
+                            // Call update method
+
                             GetTeacherData form = new GetTeacherData("Update", (Teacher)personToUpdate);
                             form.ShowDialog();
                         }
@@ -375,6 +381,7 @@ namespace DesktopInformationSystem
                         personToUpdate = admins.FirstOrDefault(a => a.Id == id);
                         if (personToUpdate != null)
                         {
+                            // Call update method
                             GetAdminData form = new GetAdminData("Update", (Admin)personToUpdate);
                             form.ShowDialog();
                         }
