@@ -23,7 +23,7 @@ namespace DesktopInformationSystem
         private string email = string.Empty;
         private Role role;
         // for auto increase Id
-        private static int nextId = 1; 
+        private static int nextId = 1;
 
         public string Id 
         {
