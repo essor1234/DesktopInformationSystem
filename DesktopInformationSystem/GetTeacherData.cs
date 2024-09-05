@@ -28,7 +28,7 @@ namespace DesktopInformationSystem
 
             if (mode == "Update" && teacher != null)
             {
-                // Fill the form with the current student's data
+                
 
                 nameBox.Text = teacher.Name;
                 teleBox.Text = teacher.Telephone;
@@ -36,10 +36,12 @@ namespace DesktopInformationSystem
                 comboBox1.Text = teacher.Subject1;
                 comboBox2.Text = teacher.Subject2;
                 salaryNum.Text = teacher.Salary.ToString();
+                this.Text = "Update Teacher Data";
+
 
             }
 
-            if (mode == "More")
+            else if (mode == "More")
             {
                 nameBox.Enabled = false;
                 teleBox.Enabled = false;
@@ -56,6 +58,8 @@ namespace DesktopInformationSystem
                 comboBox1.Text = teacher.Subject1;
                 comboBox2.Text = teacher.Subject2;
                 salaryNum.Text = teacher.Salary.ToString();
+                this.Text = "More Teacher Data";
+
             }
             else
             {
@@ -67,6 +71,8 @@ namespace DesktopInformationSystem
                 salaryNum.Enabled = true;
                 confirmBtn.Visible = true;
                 confirmBtn.Visible = true;
+                this.Text = "Adding Teacher Data";
+
             }
         }
 
@@ -109,15 +115,33 @@ namespace DesktopInformationSystem
             teacher.Role = Role.Teacher;
 
             // Get the phone
-            if (!string.IsNullOrEmpty(teleBox.Text))
+            //if (!string.IsNullOrEmpty(teleBox.Text))
+            //{
+            //    teacher.Telephone = teleBox.Text;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please enter a telephone number.");
+            //    return;
+            //}
+
+            /*Check phone empty*/
+            if (string.IsNullOrEmpty(teleBox.Text))
             {
-                teacher.Telephone = teleBox.Text;
-            }
-            else
-            {
+
                 MessageBox.Show("Please enter a telephone number.");
                 return;
             }
+
+            /*Check phone is number*/
+            if (!System.Text.RegularExpressions.Regex.IsMatch(teleBox.Text, @"^\d{9,11}$"))
+            {
+                MessageBox.Show("Please enter a valid phone number with 9 to 11 nummber digits.");
+                return;
+            }
+
+
+            teacher.Telephone = teleBox.Text;
 
             // Get the email
             if (!string.IsNullOrEmpty(emailBox.Text))

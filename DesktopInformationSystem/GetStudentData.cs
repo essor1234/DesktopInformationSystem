@@ -38,12 +38,13 @@ namespace DesktopInformationSystem
                 comboBox3.Text = student.PreSubj2;
                 comboBox1.Text = student.CurSubj1;
                 comboBox2.Text = student.CurSubj2;
+                this.Text = "Update Student data";
 
                 
             }
 
 
-            if (mode == "More")
+            else if (mode == "More")
             {
                 nameBox.Enabled = false;
                 teleBox.Enabled = false;
@@ -61,6 +62,8 @@ namespace DesktopInformationSystem
                 comboBox3.Text = student.PreSubj2;
                 comboBox1.Text = student.CurSubj1;
                 comboBox2.Text = student.CurSubj2;
+                this.Text = "Student More Information";
+
             }
             else
             {
@@ -72,6 +75,8 @@ namespace DesktopInformationSystem
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
                 confirmBtn.Visible = true;
+                this.Text = "Adding Student Data";
+
 
             }
         }
@@ -154,15 +159,33 @@ namespace DesktopInformationSystem
             student.Role = Role.Student;
 
             // Get the phone
-            if (!string.IsNullOrEmpty(teleBox.Text))
+            //if (!string.IsNullOrEmpty(teleBox.Text))
+            //{
+            //    student.Telephone = teleBox.Text;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please enter a telephone number.");
+            //    return;
+            //}
+
+            /*Check phone empty*/
+            if (string.IsNullOrEmpty(teleBox.Text))
             {
-                student.Telephone = teleBox.Text;
-            }
-            else
-            {
+
                 MessageBox.Show("Please enter a telephone number.");
                 return;
             }
+
+            /*Check phone is number*/
+            if (!System.Text.RegularExpressions.Regex.IsMatch(teleBox.Text, @"^\d{9,11}$"))
+            {
+                MessageBox.Show("Please enter a valid phone number with 9 to 11 nummber digits.");
+                return;
+            }
+
+
+            student.Telephone = teleBox.Text;
 
             // Get the email
             if (!string.IsNullOrEmpty(emailBox.Text))
@@ -219,6 +242,11 @@ namespace DesktopInformationSystem
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

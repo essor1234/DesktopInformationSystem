@@ -42,67 +42,65 @@ namespace DesktopInformationSystem
 
         private void toolStripSplitButton1_Click(object sender, EventArgs e)
         {
+
+
             foreach (DataGridViewRow item in this.dataGridView1.SelectedRows)
             {
-                // Get the Id of the selected item
-
                 string id = "null";
-
-                // Check if the cells are not null before trying to access their values
-                if (item.Cells["Role"].Value != null && item.Cells["Id"].Value != null)
+                string role = "null";
+                // Get the id value from the cell and convert it into string
+                if (item.Cells["Id"].Value != null && item.Cells["Role"].Value != null)
                 {
                     id = item.Cells["Id"].Value.ToString();
+                    role = item.Cells["Role"].Value.ToString();
                 }
                 else
                 {
-                    MessageBox.Show("Please choose a person to delete");
+                    MessageBox.Show("Choose a person to delete");
                 }
 
-
-                // Find the student with this Id
-                Student student = students.Find(s => s.Id == id);
-                if (student != null)
+                Person personToDelete = null;
+                // CHoose data to delete based on the role
+                switch (role)
                 {
-                    // Call the DeleteStudent function
-                    SqliteDataAccess.DeleteStudent(student);
-
-                    // Remove from the corresponding list
-                    students.Remove(student);
-                }
-                else
-                {
-                    // If not found in students, check in teachers
-                    Teacher teacher = teachers.Find(t => t.Id == id);
-                    if (teacher != null)
-                    {
-                        // Call the DeleteTeacher function (you need to implement this)
-                        SqliteDataAccess.DeleteTeacher(teacher);
-
-                        // Remove from the corresponding list
-                        teachers.Remove(teacher);
-                    }
-                    else
-                    {
-                        // If not found in teachers, check in admins
-                        Admin admin = admins.Find(a => a.Id == id);
-                        if (admin != null)
+                    case "Student":
+                        // get data by checking the id, then store all the information of that data into personToDelete
+                        personToDelete = students.Find(s => s.Id == id);
+                        if (personToDelete != null)
                         {
-                            // Call the DeleteAdmin function (you need to implement this)
-                            SqliteDataAccess.DeleteAdmin(admin);
-
-                            // Remove from the corresponding list
-                            admins.Remove(admin);
+                            // Call the function to delete in database
+                            SqliteDataAccess.DeleteStudent((Student)personToDelete);
+                            // Delete in the data grid
+                            dataGridView1.Rows.RemoveAt(item.Index);
                         }
-                    }
-                }
-                if (item.Cells["Role"].Value != null && item.Cells["Id"].Value != null)
-                {
-                    // Remove from the grid view
-                    dataGridView1.Rows.RemoveAt(item.Index);
+                        break;
+                    case "Teacher":
+                        personToDelete = teachers.Find(t => t.Id == id);
+                        if (personToDelete != null)
+                        {
+                            // Call the function to delete in database
+                            SqliteDataAccess.DeleteTeacher((Teacher)personToDelete);
+                            // Delete in the data grid
+                            dataGridView1.Rows.RemoveAt(item.Index);
+                        }
+                        break;
+                    case "Administration":
+                        personToDelete = admins.Find(a => a.Id == id);
+                        if (personToDelete != null)
+                        {
+                            // Call the function to delete in database
+                            SqliteDataAccess.DeleteAdmin((Admin)personToDelete);
+                            // Delete in the data grid
+                            dataGridView1.Rows.RemoveAt(item.Index);
+                        }
+                        break;
+
+
                 }
 
-                    
             }
+
+            
         }
 
 
@@ -151,24 +149,6 @@ namespace DesktopInformationSystem
                 displayRole("Admin");
             }
 
-            /*foreach (var student in students)
-            {
-                var cellValues = student.GetDisplayText();
-                dataGridView1.Rows.Add(cellValues);
-            }
-
-            foreach (var teacher in teachers)
-            {
-                var cellValues = teacher.GetDisplayText();
-                dataGridView1.Rows.Add(cellValues);
-            }
-
-            foreach (var admin in admins)
-            {
-                var cellValues = admin.GetDisplayText();
-                dataGridView1.Rows.Add(cellValues);
-            }*/
-
         }
 
         private void displayAll()
@@ -204,45 +184,7 @@ namespace DesktopInformationSystem
             }
         }
 
-        /*private void displayRole(String role)
-        {
-            // Get data from database
-            students = SqliteDataAccess.LoadStudent();
-            teachers = SqliteDataAccess.LoadTeacher();
-            admins = SqliteDataAccess.LoadAdmin();
-
-
-
-            if (role.Equals("Teacher"))
-            {
-                foreach (var teacher in teachers)
-                {
-                    var cellValues = teacher.GetDisplayText();
-                    dataGridView1.Rows.Add(cellValues);
-                }
-
-
-            }
-            else if (role.Equals("Student"))
-            {
-                foreach (var student in students)
-                {
-                    var cellValues = student.GetDisplayText();
-                    dataGridView1.Rows.Add(cellValues);
-                }
-
-            } else if (role.Equals("Admin"))
-            {
-                foreach (var admin in admins)
-                {
-                    var cellValues = admin.GetDisplayText();
-                    dataGridView1.Rows.Add(cellValues);
-                }
-            }else
-            {
-                MessageBox.Show("Please choose a appropriate Role");
-            }
-        }*/
+        
 
         private void displayRole(String role)
         {
@@ -251,15 +193,7 @@ namespace DesktopInformationSystem
             teachers = SqliteDataAccess.LoadTeacher();
             admins = SqliteDataAccess.LoadAdmin();
 
-            dataGridView1.Rows.Clear(); // Clear existing rows
-            dataGridView1.Columns.Clear(); // Clear existing columns
-
-            // Add columns for the base properties
-            dataGridView1.Columns.Add("Id", "Id");
-            dataGridView1.Columns.Add("Name", "Name");
-            dataGridView1.Columns.Add("Telephone", "Telephone");
-            dataGridView1.Columns.Add("Email", "Email");
-            dataGridView1.Columns.Add("Role", "Role");
+            
 
             if (role.Equals("Teacher"))
             {
@@ -274,7 +208,7 @@ namespace DesktopInformationSystem
                 foreach (var teacher in teachers)
                 {
                     // Add data into grid veiw columns
-                    dataGridView1.Rows.Add(teacher.GetDisplayText().Concat(new string[] { teacher.Salary.ToString(), teacher.Subject1, teacher.Subject2 }).ToArray());
+                    dataGridView1.Rows.Add(teacher.GetDisplayText());
                 }
             }
             else if (role.Equals("Student"))
@@ -291,7 +225,7 @@ namespace DesktopInformationSystem
                 foreach (var student in students)
                 {
                     // Add data into grid veiw columns
-                    dataGridView1.Rows.Add(student.GetDisplayText().Concat(new string[] { student.CurSubj1, student.CurSubj2, student.PreSubj1, student.PreSubj2 }).ToArray());
+                    dataGridView1.Rows.Add(student.GetDisplayText());
                 }
             }
             else if (role.Equals("Admin"))
@@ -307,7 +241,7 @@ namespace DesktopInformationSystem
                 foreach (var admin in admins)
                 {
                     // Add data into grid veiw columns
-                    dataGridView1.Rows.Add(admin.GetDisplayText().Concat(new string[] { admin.Salary.ToString(), admin.Position, admin.WorkHours.ToString() }).ToArray());
+                    dataGridView1.Rows.Add(admin.GetDisplayText());
                 }
             
             
@@ -321,6 +255,7 @@ namespace DesktopInformationSystem
         private void RemoveAdditionalColumns()
         {
             // Remove any existing additional columns
+            // Keep basic data columns only
             while (dataGridView1.Columns.Count > 5)
             {
                 dataGridView1.Columns.RemoveAt(5);
@@ -350,9 +285,6 @@ namespace DesktopInformationSystem
                 {
                     MessageBox.Show("Please choose a person to edit");
                 }
-
-
-
 
                 // Find the item to update
                 Person personToUpdate = null;
@@ -406,11 +338,7 @@ namespace DesktopInformationSystem
                     MessageBox.Show("Please choose a person to show");
                 }
 
-
-
-
-
-                // Find the item to update
+                // Find the item to show more
                 Person personToUpdate = null;
                 switch (role)
                 {

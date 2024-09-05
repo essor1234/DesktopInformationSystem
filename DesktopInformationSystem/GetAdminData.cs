@@ -35,10 +35,12 @@ namespace DesktopInformationSystem
                 positionCombo.Text = admin.Position;
                 salaryNum.Text = Convert.ToString(admin.Salary);
                 workBox.Text = Convert.ToString(admin.WorkHours);
+                this.Text = "Update Admin Data";
+
 
             }
 
-            if (mode == "More")
+            else if (mode == "More")
             {
                 nameBox.Enabled = false;
                 teleBox.Enabled = false;
@@ -54,6 +56,8 @@ namespace DesktopInformationSystem
                 positionCombo.Text = admin.Position;
                 salaryNum.Text = Convert.ToString(admin.Salary);
                 workBox.Text = Convert.ToString(admin.WorkHours);
+                this.Text = "More Admin Data";
+
             }
             else
             {
@@ -64,6 +68,8 @@ namespace DesktopInformationSystem
                 salaryNum.Enabled = true;
                 workBox.Enabled = true;
                 confirmBtn.Visible = true;
+                this.Text = "Adding Admin Data";
+
             }
 
 
@@ -103,15 +109,36 @@ namespace DesktopInformationSystem
             admin.Role = Role.Administration;
 
             // Get the phone
-            if (!string.IsNullOrEmpty(teleBox.Text))
+            /*use regex for phone number here*/
+            //if (!string.IsNullOrEmpty(teleBox.Text))
+            //{
+            //    admin.Telephone = teleBox.Text;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please enter a telephone number.");
+            //    return;
+            //}
+            /*Check phone empty*/
+            if (string.IsNullOrEmpty(teleBox.Text))
             {
-                admin.Telephone = teleBox.Text;
-            }
-            else
-            {
+
                 MessageBox.Show("Please enter a telephone number.");
                 return;
             }
+
+            /*Check phone is number*/
+            if (!System.Text.RegularExpressions.Regex.IsMatch(teleBox.Text, @"^\d{9,11}$"))
+            {
+                MessageBox.Show("Please enter a valid phone number with 9 to 11 nummber digits.");
+                return;
+            }
+
+
+            admin.Telephone = teleBox.Text;
+
+
+
 
             // Get the email
             if (!string.IsNullOrEmpty(emailBox.Text))
@@ -149,6 +176,10 @@ namespace DesktopInformationSystem
                 MessageBox.Show("Hours should contain natural number only");
                 return;
             }
+
+
+
+
 
             // Show a message depending on the mode
             if (mode == "Update")

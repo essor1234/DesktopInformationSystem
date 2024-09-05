@@ -24,7 +24,7 @@ namespace DesktopInformationSystem
         private Role role;
         // for auto increase Id
         private static int nextId = 1;
-
+        // not let outside code change it
         public string Id 
         {
             get { return id; }

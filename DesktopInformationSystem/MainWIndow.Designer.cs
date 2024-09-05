@@ -125,6 +125,7 @@
             // 
             // displayBox
             // 
+            this.displayBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.displayBox.FormattingEnabled = true;
             this.displayBox.Items.AddRange(new object[] {
             "ALL",
