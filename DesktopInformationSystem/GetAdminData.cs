@@ -182,16 +182,44 @@ namespace DesktopInformationSystem
 
 
             // Show a message depending on the mode
+            //if (mode == "Update")
+            //{
+            //    SqliteDataAccess.UpdateAdmin(admin);
+            //    MessageBox.Show("Updated");
+            //}
+            //else
+            //{
+            //    SqliteDataAccess.SaveAdmin(admin);
+            //    MessageBox.Show("Added");
+            //}
+
+            // Show a message depending on the mode
             if (mode == "Update")
             {
-                SqliteDataAccess.UpdateAdmin(admin);
-                MessageBox.Show("Updated");
+
+                bool result = SqliteDataAccess.UpdateAdmin(admin);
+                if (!result)
+                {
+                    MessageBox.Show("This phone number is already in use. Please enter a different phone number.");
+                }
+                else
+                {
+                    MessageBox.Show("Updated");
+                }
             }
             else
             {
-                SqliteDataAccess.SaveAdmin(admin);
-                MessageBox.Show("Added");
+                bool result = SqliteDataAccess.SaveAdmin(admin);
+                if (!result)
+                {
+                    MessageBox.Show("This phone number is already in use. Please enter a different phone number.");
+                }
+                else
+                {
+                    MessageBox.Show("Added");
+                }
             }
+
         }
 
     }

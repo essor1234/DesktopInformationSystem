@@ -225,13 +225,27 @@ namespace DesktopInformationSystem
             // Show a message depending on the mode
             if (mode == "Update")
             {
-                SqliteDataAccess.UpdateStudent(student);
-                MessageBox.Show("Updated");
+                bool result = SqliteDataAccess.UpdateStudent(student);
+                if (!result)
+                {
+                    MessageBox.Show("This phone number is already in use. Please enter a different phone number.");
+                }
+                else
+                {
+                    MessageBox.Show("Updated");
+                }
             }
             else
             {
-                SqliteDataAccess.SaveStudent(student);
-                MessageBox.Show("Added");
+                bool result = SqliteDataAccess.SaveStudent(student);
+                if (!result)
+                {
+                    MessageBox.Show("This phone number is already in use. Please enter a different phone number.");
+                }
+                else
+                {
+                    MessageBox.Show("Added");
+                }
             }
         }
 
